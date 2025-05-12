@@ -1,0 +1,144 @@
+{% extends "base.html" %}
+
+{% block title %}Admission Letter - TechElar{% endblock %}
+
+{% block content %}
+<div class="row justify-content-center py-5">
+    <div class="col-md-8">
+        <div class="card">
+            <div class="card-header bg-primary text-white">
+                <h3 class="mb-0">Admission Letter</h3>
+            </div>
+            <div class="card-body">
+                <div class="text-center mb-4">
+                    <img src="{{ url_for('static', filename='images/logo.png') }}" alt="TechElar Logo" class="mb-3"
+                        style="max-width: 200px;">
+                    <h4 class="mb-0">TECHELAR WEB DEVELOPMENT TRAINING</h4>
+                    <p class="text-muted">Nairobi, Kenya</p>
+                </div>
+
+                <div class="mb-4">
+                    <p class="mb-1">Date: {{ registration.created_at.strftime('%B %d, %Y') }}</p>
+                    <p class="mb-1">Admission Number: <strong>{{ registration.admission_number }}</strong></p>
+                    <p class="mb-1">Name: <strong>{{ registration.name }}</strong></p>
+                    {% if registration.business_name %}
+                    <p class="mb-1">Business Name: <strong>{{ registration.business_name }}</strong></p>
+                    {% endif %}
+                    <p class="mb-1">Email: <strong>{{ registration.email }}</strong></p>
+                </div>
+
+                <div class="mb-4">
+                    <h5 class="mb-3">Dear {{ registration.name }},</h5>
+                    <p>We are pleased to inform you that your application for admission to TechElar Web Development
+                        Training has been accepted. This letter serves as your official admission confirmation.</p>
+                </div>
+
+                <div class="mb-4">
+                    <h5 class="mb-3">Course Details:</h5>
+                    <ul class="list-unstyled">
+                        <li class="mb-2"><strong>Course Type:</strong>
+                            {% if registration.course_type == 'wordpress' %}
+                            WordPress Development
+                            {% elif registration.course_type == 'web_dev' %}
+                            Web Development (HTML, CSS, Bootstrap)
+                            {% endif %}
+                        </li>
+                        <li class="mb-2"><strong>Duration:</strong>
+                            {% if registration.course_type == 'wordpress' %}
+                            {% if registration.duration == '1_month' %}
+                            WordPress Basics (1 Month)
+                            {% elif registration.duration == '3_months' %}
+                            Advanced WordPress (3 Months)
+                            {% endif %}
+                            {% elif registration.course_type == 'web_dev' %}
+                            {% if registration.duration == '2_months' %}
+                            Web Development (2 Months)
+                            {% endif %}
+                            {% endif %}
+                        </li>
+                        <li class="mb-2"><strong>Start Date:</strong> {{ registration.appointment_date.strftime('%B %d,
+                            %Y') }}</li>
+                        <li class="mb-2"><strong>Course Fee:</strong> KES {{ "%.2f"|format(registration.payment_amount)
+                            }}</li>
+                    </ul>
+                </div>
+
+                <div class="mb-4">
+                    <h5 class="mb-3">Payment Instructions:</h5>
+                    <div class="alert alert-info">
+                        <p class="mb-2"><strong>Pay via M-Pesa:</strong></p>
+                        <ol class="mb-0">
+                            <li>Go to your M-Pesa menu</li>
+                            <li>Select "Pay Bill"</li>
+                            <li>Enter Business Number: <strong>542542</strong></li>
+                            <li>Enter Account Number: <strong>00105076123550</strong></li>
+                            <li>Enter Amount: <strong>KES {{ "%.2f"|format(registration.payment_amount) }}</strong></li>
+                            <li>Enter your M-Pesa PIN</li>
+                            <li>Confirm the payment</li>
+                        </ol>
+                    </div>
+                </div>
+
+                <div class="mb-4">
+                    <h5 class="mb-3">Next Steps:</h5>
+                    <ol>
+                        <li>Complete your payment using the M-Pesa instructions above</li>
+                        <li>Save this admission letter for your records</li>
+                        <!-- <li>Arrive at our training center on your start date</li>
+                        <li>Bring a valid government-issued ID</li> -->
+                    </ol>
+                </div>
+
+                <div class="mb-4">
+                    <p>We look forward to welcoming you to TechElar and helping you achieve your web development goals!
+                    </p>
+                    <p class="mb-0">Best regards,<br>The TechElar Team</p>
+                </div>
+
+                <div class="text-center mt-4">
+                    <a href="{{ url_for('download_admission_letter', admission_number=registration.admission_number) }}"
+                        class="btn btn-primary btn-lg">
+                        <i class="fas fa-download me-2"></i>Download Admission Letter
+                    </a>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<style>
+    @media print {
+
+        .btn,
+        .card-header {
+            display: none !important;
+        }
+
+        .card {
+            border: none !important;
+        }
+
+        .card-body {
+            padding: 0 !important;
+        }
+
+        body {
+            font-family: Arial, sans-serif;
+            line-height: 1.6;
+            color: #333;
+        }
+
+        .alert {
+            border: 1px solid #ddd;
+            background-color: #f8f9fa;
+            padding: 15px;
+            margin: 15px 0;
+        }
+
+        img {
+            max-width: 200px;
+            height: auto;
+        }
+    }
+</style>
+{% endblock %}

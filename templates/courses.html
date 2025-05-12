@@ -1,0 +1,204 @@
+{% extends "base.html" %}
+
+{% block title %}Courses - TechElar Web Development Training{% endblock %}
+
+{% block content %}
+<!-- Hero Section -->
+<section class="courses-hero py-5 bg-gradient">
+    <div class="container">
+        <div class="row align-items-center">
+            <div class="col-lg-8 mx-auto text-center">
+                <h1 class="display-3 fw-bold mb-4 text-gradient">Our Courses</h1>
+                <p class="lead mb-4 fs-4">Choose from our comprehensive range of web development courses designed to
+                    launch your career</p>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- WordPress Development Courses -->
+<section class="wordpress-courses py-1">
+    <div class="container">
+        <div class="text-center mb-5">
+            <h2 class="display-5 fw-bold mb-3">WordPress Development</h2>
+            <p class="lead text-muted">Master WordPress development with our expert-led courses</p>
+        </div>
+        <div class="row g-4">
+            <!-- WordPress Basics -->
+            <div class="col-md-6">
+                <div class="course-card h-100 border-0 shadow-sm hover-card">
+                    <div class="card-body p-4">
+                        <div class="course-badge bg-primary text-white">1 Month</div>
+                        <div class="icon-box mb-4">
+                            <i class="fas fa-wordpress fa-3x text-primary"></i>
+                        </div>
+                        <h3 class="h4 mb-3">WordPress Basics</h3>
+                        <p class="text-muted mb-4">Perfect for beginners. Learn the fundamentals of WordPress
+                            development and website creation.</p>
+                        <div class="course-features mb-4">
+                            <h5 class="mb-3">What You'll Learn:</h5>
+                            <ul class="list-unstyled">
+                                <li class="mb-2"><i class="fas fa-check-circle text-success me-2"></i>WordPress
+                                    Installation & Setup</li>
+                                <li class="mb-2"><i class="fas fa-check-circle text-success me-2"></i>Theme
+                                    Customization</li>
+                                <li class="mb-2"><i class="fas fa-check-circle text-success me-2"></i>Plugin Management
+                                </li>
+                                <li class="mb-2"><i class="fas fa-check-circle text-success me-2"></i>Content Management
+                                </li>
+                                <li><i class="fas fa-check-circle text-success me-2"></i>Basic SEO Optimization</li>
+                            </ul>
+                        </div>
+                        <div class="course-price mb-4">
+                            <h4 class="text-primary mb-0">KES 15,000</h4>
+                            <small class="text-muted">Full Course Fee</small>
+                        </div>
+                        <a href="{{ url_for('register') }}" class="btn btn-primary w-100">
+                            <i class="fas fa-rocket me-2"></i>Register Now
+                        </a>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Advanced WordPress -->
+            <div class="col-md-6">
+                <div class="course-card h-100 border-0 shadow-sm hover-card">
+                    <div class="card-body p-4">
+                        <div class="course-badge bg-primary text-white">3 Months</div>
+                        <div class="icon-box mb-4">
+                            <i class="fas fa-code fa-3x text-primary"></i>
+                        </div>
+                        <h3 class="h4 mb-3">Advanced WordPress</h3>
+                        <p class="text-muted mb-4">Take your WordPress skills to the next level with advanced
+                            development techniques.</p>
+                        <div class="course-features mb-4">
+                            <h5 class="mb-3">What You'll Learn:</h5>
+                            <ul class="list-unstyled">
+                                <li class="mb-2"><i class="fas fa-check-circle text-success me-2"></i>Custom Theme
+                                    Development</li>
+                                <li class="mb-2"><i class="fas fa-check-circle text-success me-2"></i>Plugin Development
+                                </li>
+                                <li class="mb-2"><i class="fas fa-check-circle text-success me-2"></i>E-commerce
+                                    Integration</li>
+                                <li class="mb-2"><i class="fas fa-check-circle text-success me-2"></i>Advanced Security
+                                </li>
+                                <li><i class="fas fa-check-circle text-success me-2"></i>Performance Optimization</li>
+                            </ul>
+                        </div>
+                        <div class="course-price mb-4">
+                            <h4 class="text-primary mb-0">KES 45,000</h4>
+                            <small class="text-muted">Full Course Fee</small>
+                        </div>
+                        <a href="{{ url_for('register') }}" class="btn btn-primary w-100">
+                            <i class="fas fa-rocket me-2"></i>Register Now
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- Web Development Courses -->
+<section class="web-dev-courses py-5 bg-light">
+    <div class="container">
+        <div class="text-center mb-5">
+            <h2 class="display-5 fw-bold mb-3">Web Development</h2>
+            <p class="lead text-muted">Master modern web development with HTML, CSS, and Bootstrap</p>
+        </div>
+        <div class="row g-4">
+            <div class="col-md-6 mx-auto">
+                <div class="course-card h-100 border-0 shadow-sm hover-card">
+                    <div class="card-body p-4">
+                        <div class="course-badge bg-primary text-white">2 Months</div>
+                        <div class="icon-box mb-4">
+                            <i class="fas fa-laptop-code fa-3x text-primary"></i>
+                        </div>
+                        <h3 class="h4 mb-3">Web Development Fundamentals</h3>
+                        <p class="text-muted mb-4">Learn the essential skills needed to build modern, responsive
+                            websites.</p>
+                        <div class="course-features mb-4">
+                            <h5 class="mb-3">What You'll Learn:</h5>
+                            <ul class="list-unstyled">
+                                <li class="mb-2"><i class="fas fa-check-circle text-success me-2"></i>HTML5 & CSS3</li>
+                                <li class="mb-2"><i class="fas fa-check-circle text-success me-2"></i>Bootstrap
+                                    Framework</li>
+                                <li class="mb-2"><i class="fas fa-check-circle text-success me-2"></i>Responsive Design
+                                </li>
+                                <li class="mb-2"><i class="fas fa-check-circle text-success me-2"></i>JavaScript Basics
+                                </li>
+                                <li><i class="fas fa-check-circle text-success me-2"></i>Git Version Control</li>
+                            </ul>
+                        </div>
+                        <div class="course-price mb-4">
+                            <h4 class="text-primary mb-0">KES 25,000</h4>
+                            <small class="text-muted">Full Course Fee</small>
+                        </div>
+                        <a href="{{ url_for('register') }}" class="btn btn-primary w-100">
+                            <i class="fas fa-rocket me-2"></i>Register Now
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- Course Features -->
+<section class="course-features py-5">
+    <div class="container">
+        <div class="text-center mb-5">
+            <h2 class="display-5 fw-bold mb-3">Course Features</h2>
+            <p class="lead text-muted">What makes our courses stand out</p>
+        </div>
+        <div class="row g-4">
+            <div class="col-md-4">
+                <div class="feature-card text-center p-4">
+                    <div class="icon-wrapper mb-4">
+                        <i class="fas fa-laptop-code fa-3x text-primary"></i>
+                    </div>
+                    <h4 class="mb-3">Hands-on Training</h4>
+                    <p class="text-muted">Learn by doing with practical exercises and real-world projects that build
+                        your portfolio.</p>
+                </div>
+            </div>
+            <div class="col-md-4">
+                <div class="feature-card text-center p-4">
+                    <div class="icon-wrapper mb-4">
+                        <i class="fas fa-certificate fa-3x text-primary"></i>
+                    </div>
+                    <h4 class="mb-3">Certification</h4>
+                    <p class="text-muted">Earn industry-recognized certificates that validate your skills and boost your
+                        career.</p>
+                </div>
+            </div>
+            <div class="col-md-4">
+                <div class="feature-card text-center p-4">
+                    <div class="icon-wrapper mb-4">
+                        <i class="fas fa-users fa-3x text-primary"></i>
+                    </div>
+                    <h4 class="mb-3">Expert Instructors</h4>
+                    <p class="text-muted">Learn from industry professionals with years of real-world experience.</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- Call to Action -->
+<section class="cta-section py-5 bg-primary text-white">
+    <div class="container">
+        <div class="row align-items-center">
+            <div class="col-lg-8 text-center text-lg-start">
+                <h2 class="display-5 fw-bold mb-3">Ready to Start Your Web Development Journey?</h2>
+                <p class="lead mb-0">Join our community of learners and transform your career today.</p>
+            </div>
+            <div class="col-lg-4 text-center text-lg-end mt-4 mt-lg-0">
+                <a href="{{ url_for('register') }}" class="btn btn-light btn-lg px-5 py-3">
+                    <i class="fas fa-rocket me-2"></i>Get Started Now
+                </a>
+            </div>
+        </div>
+    </div>
+</section>
+{% endblock %}

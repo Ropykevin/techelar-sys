@@ -1,0 +1,214 @@
+{% extends "base.html" %}
+
+{% block title %}Register - TechElar Web Development Training{% endblock %}
+
+{% block content %}
+<!-- Hero Section -->
+<section class="register-hero py-5 bg-gradient">
+    <div class="container">
+        <div class="row align-items-center">
+            <div class="col-lg-8 mx-auto text-center">
+                <h1 class="display-3 fw-bold mb-4 text-gradient">Start Your Web Development Journey</h1>
+                <p class="lead mb-4 fs-4">Join our community of learners and transform your career with expert-led
+                    training</p>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- Registration Form -->
+<section class="registration-form py-5">
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="col-lg-8">
+                <div class="card border-0 shadow-lg">
+                    <div class="card-body p-5">
+                        <h2 class="text-center mb-4">Course Registration</h2>
+                        <form method="POST" action="{{ url_for('register') }}" class="needs-validation" novalidate>
+                            <!-- Personal Information -->
+                            <div class="mb-4">
+                                <h4 class="mb-3">Personal Information</h4>
+                                <div class="row g-3">
+                                    <div class="col-md-6">
+                                        <div class="form-floating mb-3">
+                                            <input type="text" class="form-control" id="name" name="name"
+                                                placeholder="Full Name" required>
+                                            <label for="name">Full Name</label>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-6">
+                                        <div class="form-floating mb-3">
+                                            <input type="email" class="form-control" id="email" name="email"
+                                                placeholder="Email Address" required>
+                                            <label for="email">Email Address</label>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <!-- Course Selection -->
+                            <div class="mb-4">
+                                <h4 class="mb-3">Course Selection</h4>
+                                <div class="row g-3">
+                                    <div class="col-md-6">
+                                        <div class="form-floating mb-3">
+                                            <select class="form-select" id="course_type" name="course_type" required>
+                                                <option value="">Select Course Type</option>
+                                                <option value="wordpress">WordPress Development</option>
+                                                <option value="web_dev">Web Development (HTML, CSS, Bootstrap)</option>
+                                            </select>
+                                            <label for="course_type">Course Type</label>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-6">
+                                        <div class="form-floating mb-3">
+                                            <select class="form-select" id="duration" name="duration" required>
+                                                <option value="">Select Duration</option>
+                                                <option value="1_month" class="wordpress-option">1 Month - WordPress
+                                                    Basics (KES 15,000)</option>
+                                                <option value="3_months" class="wordpress-option">3 Months - Advanced
+                                                    WordPress (KES 45,000)</option>
+                                                <option value="2_months" class="web-dev-option">2 Months - Web
+                                                    Development (KES 25,000)</option>
+                                            </select>
+                                            <label for="duration">Course Duration</label>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <!-- Additional Information -->
+                            <div class="mb-4">
+                                <h4 class="mb-3">Additional Information</h4>
+                                <div class="row g-3">
+                                    <div class="col-md-6">
+                                        <div class="form-floating mb-3">
+                                            <input type="date" class="form-control" id="appointment_date"
+                                                name="appointment_date" required>
+                                            <label for="appointment_date">Preferred Start Date</label>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-6">
+                                        <div class="form-floating mb-3">
+                                            <input type="text" class="form-control" id="business_name"
+                                                name="business_name" placeholder="Business Name (Optional)">
+                                            <label for="business_name">Business Name (Optional)</label>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <!-- Submit Button -->
+                            <div class="text-center">
+                                <button type="submit" class="btn btn-primary btn-lg px-5 py-3">
+                                    <i class="fas fa-rocket me-2"></i>Proceed to Checkout
+                                </button>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- Course Features -->
+<section class="course-features py-5 bg-light">
+    <div class="container">
+        <div class="text-center mb-5">
+            <h2 class="display-5 fw-bold mb-3">Why Choose TechElar?</h2>
+            <p class="lead text-muted">Experience the best in web development education</p>
+        </div>
+        <div class="row g-4">
+            <div class="col-md-4">
+                <div class="feature-card text-center p-4">
+                    <div class="icon-wrapper mb-4">
+                        <i class="fas fa-laptop-code fa-3x text-primary"></i>
+                    </div>
+                    <h4 class="mb-3">Hands-on Training</h4>
+                    <p class="text-muted">Learn by doing with practical exercises and real-world projects that build
+                        your portfolio.</p>
+                </div>
+            </div>
+            <div class="col-md-4">
+                <div class="feature-card text-center p-4">
+                    <div class="icon-wrapper mb-4">
+                        <i class="fas fa-certificate fa-3x text-primary"></i>
+                    </div>
+                    <h4 class="mb-3">Certification</h4>
+                    <p class="text-muted">Earn industry-recognized certificates that validate your skills and boost your
+                        career.</p>
+                </div>
+            </div>
+            <div class="col-md-4">
+                <div class="feature-card text-center p-4">
+                    <div class="icon-wrapper mb-4">
+                        <i class="fas fa-users fa-3x text-primary"></i>
+                    </div>
+                    <h4 class="mb-3">Expert Instructors</h4>
+                    <p class="text-muted">Learn from industry professionals with years of real-world experience.</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- Call to Action -->
+<section class="cta-section py-5 bg-primary text-white">
+    <div class="container">
+        <div class="row align-items-center">
+            <div class="col-lg-8 text-center text-lg-start">
+                <h2 class="display-5 fw-bold mb-3">Ready to Transform Your Career?</h2>
+                <p class="lead mb-0">Join our community of successful developers today.</p>
+            </div>
+            <div class="col-lg-4 text-center text-lg-end mt-4 mt-lg-0">
+                <a href="{{ url_for('courses') }}" class="btn btn-light btn-lg px-5 py-3">
+                    <i class="fas fa-graduation-cap me-2"></i>View Courses
+                </a>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- JavaScript for Form Validation and Dynamic Options -->
+<script>
+    document.addEventListener('DOMContentLoaded', function () {
+        const courseTypeSelect = document.getElementById('course_type');
+        const durationSelect = document.getElementById('duration');
+        const wordpressOptions = document.querySelectorAll('.wordpress-option');
+        const webDevOptions = document.querySelectorAll('.web-dev-option');
+
+        // Hide all duration options initially
+        wordpressOptions.forEach(option => option.style.display = 'none');
+        webDevOptions.forEach(option => option.style.display = 'none');
+
+        courseTypeSelect.addEventListener('change', function () {
+            const selectedCourse = this.value;
+
+            // Hide all options first
+            wordpressOptions.forEach(option => option.style.display = 'none');
+            webDevOptions.forEach(option => option.style.display = 'none');
+
+            // Show relevant options based on selection
+            if (selectedCourse === 'wordpress') {
+                wordpressOptions.forEach(option => option.style.display = '');
+            } else if (selectedCourse === 'web_dev') {
+                webDevOptions.forEach(option => option.style.display = '');
+            }
+
+            // Reset duration selection
+            durationSelect.value = '';
+        });
+
+        // Form validation
+        const form = document.querySelector('.needs-validation');
+        form.addEventListener('submit', function (event) {
+            if (!form.checkValidity()) {
+                event.preventDefault();
+                event.stopPropagation();
+            }
+            form.classList.add('was-validated');
+        });
+    });
+</script>
+{% endblock %}
