@@ -519,6 +519,8 @@ def contact():
 
 if __name__ == '__main__':
     with app.app_context():
-        db.create_all()
-        # db.drop_all()
-    app.run(debug=True) 
+        db.create_all()  # Create tables if they don't exist
+        # db.drop_all()  # Uncomment this line if you want to drop all tables
+
+    # Don't use debug=True for production. Use Gunicorn in production.
+    app.run(host='0.0.0.0', port=5010, debug=False)
