@@ -15,6 +15,9 @@ from reportlab.platypus import SimpleDocTemplate, Paragraph, Spacer, Table, Tabl
 from reportlab.lib.styles import getSampleStyleSheet, ParagraphStyle
 from reportlab.lib.units import inch
 import tempfile
+from werkzeug.middleware.proxy_fix import ProxyFix
+
+
 
 load_dotenv()
 
@@ -32,6 +35,8 @@ app.config['MAIL_PASSWORD'] = os.getenv('MAIL_PASSWORD')
 app.config['MAIL_DEFAULT_SENDER'] = os.getenv('MAIL_DEFAULT_SENDER')
 
 db = SQLAlchemy(app)
+
+app.wsgi_app = ProxyFix(app.wsgi_app, x_for=1, x_proto=1)
 
 # M-Pesa Configuration
 MPESA_CONSUMER_KEY = os.getenv('MPESA_CONSUMER_KEY')
