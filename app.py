@@ -562,7 +562,7 @@ def admin_login():
     return render_template('admin_login.html')
 
 # admin dashboard
-@app.route('/admin/dashboard')
+@app.route('/admin')
 def admin_dashboard():
     if not session.get('admin_logged_in'):
         flash('Please login to access the admin dashboard', 'error')
