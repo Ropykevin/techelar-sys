@@ -1,4 +1,4 @@
-from flask import Flask, render_template, request, redirect, url_for, flash, send_file
+from flask import Flask, render_template, request, redirect, url_for, flash, send_file, session
 from flask_sqlalchemy import SQLAlchemy
 from datetime import datetime
 import os
@@ -530,6 +530,10 @@ def admin_registrations():
 # edit registration
 @app.route('/admin/registrations/edit/<int:registration_id>', methods=['GET', 'POST'])
 def edit_registration(registration_id):
+    # get registration
+    if not session.get('admin_logged_in'):
+        flash('Please login to access the admin dashboard', 'error')
+        return redirect(url_for('admin_login'))
     registration = Registration.query.get_or_404(registration_id)
     if request.method == 'POST':
         registration.name = request.form['name']
@@ -541,6 +545,42 @@ def edit_registration(registration_id):
         registration.payment_status = request.form['payment_status']
         db.session.commit()
         return redirect(url_for('admin_registrations'))
+    
+# login to admin dashboard hardcoded username and password
+@app.route('/admin/login', methods=['GET', 'POST'])
+def admin_login():
+    if request.method == 'POST':
+        username = request.form['username']
+        password = request.form['password']
+        if username == 'admin' and password == 'admin@TechElar':
+            session['admin_logged_in'] = True
+            flash('Login successful', 'success')
+            return redirect(url_for('admin_dashboard'))
+        else:
+            flash('Invalid username or password', 'error')
+            return redirect(url_for('admin_login'))
+    return render_template('admin_login.html')
+
+# admin dashboard
+@app.route('/admin/dashboard')
+def admin_dashboard():
+    if not session.get('admin_logged_in'):
+        flash('Please login to access the admin dashboard', 'error')
+        return redirect(url_for('admin_login'))
+    # get total courses
+    total_courses = Registration.query.count()
+    # get total students
+    total_students = Registration.query.count()
+    # get recent registrations
+    recent_registrations = Registration.query.order_by(Registration.created_at.desc()).limit(5).all()
+    return render_template('admin_dashboard.html', total_courses=total_courses, total_students=total_students, recent_registrations=recent_registrations)
+
+# # recent registrations
+# @app.route('/admin/recent_registrations')
+# def recent_registrations():
+#     registrations = Registration.query.order_by(Registration.created_at.desc()).limit(5).all()
+#     return render_template('admin_recent_registrations.html', registrations=registrations)
+
 
 
 if __name__ == '__main__':

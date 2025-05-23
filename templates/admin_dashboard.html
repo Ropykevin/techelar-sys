@@ -1,0 +1,78 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<div class="container mt-5">
+    <h1 class="text-center mb-4">Admin Dashboard</h1>
+    <div class="row">
+        <div class="col-md-6">
+            <div class="card">
+                <div class="card-body">
+                    <h5 class="card-title">Total Registrations</h5>
+                    <p class="card-text">{{ total_registrations }}</p>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-6">
+            <div class="card">
+                <div class="card-body">
+                    <h5 class="card-title">Total Payments</h5>
+                    <p class="card-text">{{ total_payments }}</p>
+                </div>
+            </div>
+            
+        </div>
+        <div class="col-md-6">
+            <div class="card">
+                <div class="card-body">
+                    <h5 class="card-title">Total Courses</h5>
+                    <p class="card-text">{{ total_courses }}</p>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-6">
+            <div class="card">
+                <div class="card-body">
+                    <h5 class="card-title">Total Students</h5>
+                    <p class="card-text">{{ total_students }}</p>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-md-12">
+            <div class="card">
+                <div class="card-body">
+                    <h5 class="card-title">Recent Registrations</h5>
+                    <table class="table table-bordered">
+                        <thead>
+                            <tr>
+                                <th>Admission Number</th>
+                                <th>Name</th>
+                                <th>Email</th>
+                                <th>Course</th>
+                                <th>Payment Status</th>
+                                <th>Actions</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            {% for registration in recent_registrations %}
+                            <tr>
+                                <td>{{ registration.admission_number }}</td>
+                                <td>{{ registration.name }}</td>
+                                <td>{{ registration.email }}</td>
+                                <td>{{ registration.course }}</td>
+                                <td>{{ registration.payment_status }}</td>
+                                <td>
+                                    <a href="{{ url_for('edit_registration', registration_id=registration.id) }}" class="btn btn-primary">Edit</a>
+                                </td>
+                            </tr>
+                            {% endfor %}
+                        </tbody>
+                    </table>
+                    <a href="{{ url_for('admin_registrations') }}" class="btn btn-secondary">View All Registrations</a>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}
