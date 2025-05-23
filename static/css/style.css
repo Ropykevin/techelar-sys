@@ -1032,3 +1032,40 @@ section {
         margin-bottom: 20px;
     }
 }
+
+/* congratulation section */
+.congrats-section {
+    min-height: 100vh;
+    background: linear-gradient(135deg, #d4fc79 0%, #96e6a1 100%);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 2rem;
+}
+
+.congrats-card {
+    text-align: center;
+    padding: 2rem;
+    border-radius: 1rem;
+    background: #fff;
+    box-shadow: 0 0 20px rgba(0, 0, 0, 0.1);
+    max-width: 500px;
+    width: 100%;
+}
+
+.congrats-icon {
+    width: 80px;
+    margin-bottom: 1rem;
+}
+
+.congrats-title {
+    font-size: 2rem;
+    font-weight: 700;
+    color: #28a745;
+}
+
+.congrats-message {
+    font-size: 1.1rem;
+    margin-top: 0.5rem;
+    margin-bottom: 1.5rem;
+}

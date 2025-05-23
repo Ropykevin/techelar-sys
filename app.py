@@ -521,6 +521,27 @@ def contact():
             return redirect(url_for('contact'))
 
     return render_template('contact.html')
+# admin dashboard to view all registrations
+@app.route('/admin/registrations')
+def admin_registrations():
+    registrations = Registration.query.all()
+    return render_template('admin_registrations.html', registrations=registrations)
+
+# edit registration
+@app.route('/admin/registrations/edit/<int:registration_id>', methods=['GET', 'POST'])
+def edit_registration(registration_id):
+    registration = Registration.query.get_or_404(registration_id)
+    if request.method == 'POST':
+        registration.name = request.form['name']
+        registration.email = request.form['email']
+        registration.appointment_date = datetime.strptime(request.form['appointment_date'], '%Y-%m-%d').date()
+        registration.business_name = request.form['business_name']
+        registration.course_type = request.form['course_type']
+        registration.duration = request.form['duration']
+        registration.payment_status = request.form['payment_status']
+        db.session.commit()
+        return redirect(url_for('admin_registrations'))
+
 
 if __name__ == '__main__':
     with app.app_context():
