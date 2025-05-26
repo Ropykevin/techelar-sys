@@ -1,0 +1,186 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Admission Letter</title>
+    <style>
+        body {
+            font-family: 'Arial', sans-serif;
+            margin: 40px;
+            color: #333;
+        }
+
+        .header {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            margin-bottom: 30px;
+        }
+
+        .logo {
+            height: 70px;
+        }
+
+        h1 {
+            font-size: 24pt;
+            margin-bottom: 0;
+            color: #004080;
+        }
+
+        h2 {
+            font-size: 18pt;
+            margin-top: 40px;
+            color: #003366;
+        }
+
+        .section {
+            margin: 20px 0;
+        }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 10px;
+        }
+
+        th,
+        td {
+            padding: 10px;
+            border: 1px solid #444;
+            text-align: left;
+        }
+
+        th {
+            background-color: #f0f0f0;
+        }
+
+        .footer {
+            margin-top: 60px;
+            font-size: 12px;
+            color: #555;
+            text-align: center;
+        }
+
+        .footer a {
+            color: #004080;
+            text-decoration: none;
+        }
+
+        .footer a:hover {
+            text-decoration: underline;
+        }
+
+        hr {
+            margin: 40px 0 10px;
+            border: none;
+            border-top: 1px solid #aaa;
+        }
+    </style>
+</head>
+
+<body>
+
+    <div class="header">
+        <div>
+            <h1>TECHELAR WEB DEVELOPMENT TRAINING</h1>
+            <p>Nairobi, Kenya</p>
+        </div>
+        <div>
+            <img src="{{ url_for('static', filename='images/techelar_logo.png') }}" alt="TechElar Logo" class="logo">
+        </div>
+    </div>
+
+    <div class="section">
+        <p>Date: {{ registration.created_at.strftime('%B %d, %Y') }}</p>
+        <p>Admission Number: {{ registration.admission_number }}</p>
+        <p>Name: {{ registration.name }}</p>
+        {% if registration.business_name %}
+        <p>Business Name: {{ registration.business_name }}</p>
+        {% endif %}
+        <p>Email: {{ registration.email }}</p>
+    </div>
+
+    <div class="section">
+        <p>Dear {{ registration.name }},</p>
+        <p>We are pleased to inform you that your application for admission has been accepted. This letter serves as
+            your official confirmation.</p>
+    </div>
+
+    <div class="section">
+        <h2>Course Details</h2>
+        <table>
+            <tr>
+                <th>Course Type</th>
+                <td>{{ 'WordPress Development' if registration.course_type == 'wordpress' else 'Web Development (HTML,
+                    CSS, Bootstrap)' }}</td>
+            </tr>
+            <tr>
+                <th>Duration</th>
+                <td>
+                    {{ 'WordPress Basics (1 Month)' if registration.duration == '1_month' else
+                    'Advanced WordPress (3 Months)' if registration.duration == '3_months' else
+                    'Web Development (2 Months)' }}
+                </td>
+            </tr>
+            <tr>
+                <th>Start Date</th>
+                <td>{{ registration.appointment_date.strftime('%B %d, %Y') }}</td>
+            </tr>
+            <tr>
+                <th>Course Fee</th>
+                <td>KES {{ "{:,.2f}".format(registration.payment_amount) }}</td>
+            </tr>
+        </table>
+    </div>
+
+    <div class="section">
+        <h2>Payment Instructions</h2>
+        <p><strong>Option 1: Full Payment</strong><br>
+            Pay the full amount of KES {{ "{:,.2f}".format(registration.payment_amount) }} via M-Pesa:<br>
+            <b>Paybill:</b> 542542<br>
+            <b>Account Number:</b> 00105076123550
+        </p>
+
+        {% set weeks = 4 if registration.course_type == 'wordpress' and registration.duration == '1_month'
+        else 12 if registration.course_type == 'wordpress'
+        else 8 %}
+        {% set weekly = registration.payment_amount / weeks %}
+
+        <p><strong>Option 2: Weekly Installments</strong><br>
+            Pay KES {{ "{:,.2f}".format(weekly) }} per week for {{ weeks }} weeks.</p>
+
+        <p><strong>Option 3: Monthly Installments</strong><br>
+            • 1st Installment (50%): KES {{ "{:,.2f}".format(registration.payment_amount * 0.5) }}<br>
+            • 2nd Installment (50%): KES {{ "{:,.2f}".format(registration.payment_amount * 0.5) }}</p>
+    </div>
+
+    <div class="section">
+        <h2>Next Steps</h2>
+        <ol>
+            <li>Complete your payment using the M-Pesa instructions above.</li>
+            <li>Save this admission letter for your records.</li>
+            <li>Reach out to our office for any clarifications.</li>
+        </ol>
+    </div>
+
+    <div class="section">
+        <p>We look forward to welcoming you to TechElar and supporting your journey into web development.</p>
+        <p>Best regards,<br><strong>The TechElar Team</strong></p>
+    </div>
+
+    <div class="footer">
+        <hr />
+        <p>
+            TechElar Web Development Training<br>
+            Nairobi, Kenya | Phone: +254 700 000 000 | Email: info@techelar.co.ke<br>
+            Website: <a href="https://www.techelar.co.ke" target="_blank">www.techelar.co.ke</a>
+        </p>
+        <p style="font-size: 11px; color: #777;">
+            &copy; {{ now().year }} TechElar. All rights reserved.
+        </p>
+    </div>
+
+</body>
+
+</html>

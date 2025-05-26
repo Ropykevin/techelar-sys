@@ -57,7 +57,7 @@ class Registration(db.Model):
     course_type = db.Column(db.String(20), nullable=False)
     duration = db.Column(db.String(20), nullable=False)
     payment_status = db.Column(db.String(20), default='pending')
-    mpesa_phone = db.Column(db.String(15))
+    phone = db.Column(db.String(15),nullable=False)
     payment_amount = db.Column(db.Float, nullable=False)
     created_at = db.Column(db.DateTime, default=datetime.utcnow)
 
@@ -197,11 +197,10 @@ def register():
             # Get form data
             name = request.form['name']
             email = request.form['email']
-            appointment_date = datetime.strptime(request.form['appointment_date'], '%Y-%m-%d').date()
-            business_name = request.form.get('business_name')
+            appointment_date = datetime.strptime(request.form['appointment_date'], '%Y-%m-%d').date() # business_name = request.form.get('business_name')
             course_type = request.form['course_type']
             duration = request.form['duration']
-
+            phone = request.form['phone']
             # Determine course cost based on course type and duration
             if course_type == 'wordpress':
                 if duration == '1_month':
@@ -223,7 +222,8 @@ def register():
                 name=name,
                 email=email,
                 appointment_date=appointment_date,
-                business_name=business_name,
+                # business_name=business_name,
+                phone=phone,
                 course_type=course_type,
                 duration=duration,
                 payment_amount=payment_amount
