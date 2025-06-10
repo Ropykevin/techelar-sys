@@ -50,10 +50,8 @@
                                             <label for="phone">Phone Number</label>
                                         </div>
                                     </div>
-
                                 </div>
                             </div>
-
 
                             <!-- Course Selection -->
                             <div class="mb-4">
@@ -65,6 +63,9 @@
                                                 <option value="">Select Course Type</option>
                                                 <option value="wordpress">WordPress Development</option>
                                                 <option value="web_dev">Web Development (HTML, CSS, Bootstrap)</option>
+                                                <option value="digital_marketing">Digital Marketing</option>
+                                                <option value="fullstack">Fullstack Web Development (Python Flask, SQL,
+                                                    HTML, CSS, JS)</option>
                                             </select>
                                             <label for="course_type">Course Type</label>
                                         </div>
@@ -73,32 +74,30 @@
                                         <div class="form-floating mb-3">
                                             <select class="form-select" id="duration" name="duration" required>
                                                 <option value="">Select Duration</option>
+
+                                                <!-- WordPress -->
                                                 <option value="1_month" class="wordpress-option">1 Month - WordPress
                                                     Basics (KES 15,000)</option>
                                                 <option value="3_months" class="wordpress-option">3 Months - Advanced
                                                     WordPress (KES 45,000)</option>
+
+                                                <!-- Web Development -->
                                                 <option value="2_months" class="web-dev-option">2 Months - Web
                                                     Development (KES 25,000)</option>
+
+                                                <!-- Fullstack -->
+                                                <option value="4_months_fullstack" class="fullstack-option">4 Months -
+                                                    Fullstack Web Development (KES 50,000)</option>
+
+                                                <!-- Digital Marketing -->
+                                                <option value="2_month_digital" class="digital-marketing-option">2
+                                                    Months - Digital Marketing Essentials (KES 20,000)</option>
+                                                <option value="3_months_digital" class="digital-marketing-option">3
+                                                    Months - Digital Marketing Mastery (KES 35,000)</option>
                                             </select>
                                             <label for="duration">Course Duration</label>
                                         </div>
                                     </div>
-                                    <div class="col-md-6"> 
-                                        <div class="col-md-6">
-                                            <div class="form-floating mb-3">
-                                                <input type="date" class="form-control" id="appointment_date" name="appointment_date" required>
-                                                <label for="appointment_date">Preferred Start Date</label>
-                                            </div>
-                                        </div>
-
-                                    </div>
-                                </div>
-                            </div>
-
-                            <!-- Additional Information -->
-                            <!-- <div class="mb-4">
-                                <h4 class="mb-3">Additional Information</h4>
-                                <div class="row g-3">
                                     <div class="col-md-6">
                                         <div class="form-floating mb-3">
                                             <input type="date" class="form-control" id="appointment_date"
@@ -106,15 +105,8 @@
                                             <label for="appointment_date">Preferred Start Date</label>
                                         </div>
                                     </div>
-                                    <div class="col-md-6">
-                                        <div class="form-floating mb-3">
-                                            <input type="text" class="form-control" id="business_name"
-                                                name="business_name" placeholder="Business Name (Optional)">
-                                            <label for="business_name">Business Name (Optional)</label>
-                                        </div>
-                                    </div>
                                 </div>
-                            </div> -->
+                            </div>
 
                             <!-- Submit Button -->
                             <div class="text-center">
@@ -188,44 +180,39 @@
     </div>
 </section>
 
-<!-- JavaScript for Form Validation and Dynamic Options -->
+<!-- JavaScript for Dynamic Duration Options -->
 <script>
-    document.addEventListener('DOMContentLoaded', function () {
+    document.addEventListener("DOMContentLoaded", () => {
         const courseTypeSelect = document.getElementById('course_type');
         const durationSelect = document.getElementById('duration');
         const wordpressOptions = document.querySelectorAll('.wordpress-option');
         const webDevOptions = document.querySelectorAll('.web-dev-option');
+        const digitalOptions = document.querySelectorAll('.digital-marketing-option');
+        const fullstackOptions = document.querySelectorAll('.fullstack-option');
 
-        // Hide all duration options initially
-        wordpressOptions.forEach(option => option.style.display = 'none');
-        webDevOptions.forEach(option => option.style.display = 'none');
+        function hideAllDurations() {
+            [...wordpressOptions, ...webDevOptions, ...digitalOptions, ...fullstackOptions].forEach(option => {
+                option.style.display = 'none';
+            });
+        }
+
+        hideAllDurations();
 
         courseTypeSelect.addEventListener('change', function () {
+            hideAllDurations();
             const selectedCourse = this.value;
 
-            // Hide all options first
-            wordpressOptions.forEach(option => option.style.display = 'none');
-            webDevOptions.forEach(option => option.style.display = 'none');
-
-            // Show relevant options based on selection
             if (selectedCourse === 'wordpress') {
                 wordpressOptions.forEach(option => option.style.display = '');
             } else if (selectedCourse === 'web_dev') {
                 webDevOptions.forEach(option => option.style.display = '');
+            } else if (selectedCourse === 'digital_marketing') {
+                digitalOptions.forEach(option => option.style.display = '');
+            } else if (selectedCourse === 'fullstack') {
+                fullstackOptions.forEach(option => option.style.display = '');
             }
 
-            // Reset duration selection
             durationSelect.value = '';
-        });
-
-        // Form validation
-        const form = document.querySelector('.needs-validation');
-        form.addEventListener('submit', function (event) {
-            if (!form.checkValidity()) {
-                event.preventDefault();
-                event.stopPropagation();
-            }
-            form.classList.add('was-validated');
         });
     });
 </script>
