@@ -1,31 +1,11 @@
-version: '3.8'
 
+version: '3'
 services:
-  web:
-    build: .
-    ports:
-      - "5010:5010"
-    environment:
-      - FLASK_ENV=development
-      - DATABASE_URL=postgresql+psycopg2://user:password@db:5432/techelar
-      - SECRET_KEY=your-secret-key
-    depends_on:
-      - db
-    volumes:
-      - .:/app
-    command: flask run --host=0.0.0.0 --port=5010
+    web:
+        build: .
+        # env_file: .env
+        container_name: techelar
+        restart: always
+        ports:
+            - 5010:80
 
-  db:
-    image: postgres:14
-    restart: always
-    environment:
-      POSTGRES_DB: techelar
-      POSTGRES_USER: user
-      POSTGRES_PASSWORD: password
-    ports:
-      - "5432:5432"
-    volumes:
-      - postgres_data:/var/lib/postgresql/data
-
-volumes:
-  postgres_data:
