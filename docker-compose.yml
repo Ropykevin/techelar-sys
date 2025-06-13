@@ -7,7 +7,7 @@ services:
       - "5010:5010"
     environment:
       - FLASK_ENV=development
-      - DATABASE_URL=postgresql+psycopg2://user:password@db:5433/techelar
+      - DATABASE_URL=postgresql+psycopg2://user:password@db:5432/techelar
       - SECRET_KEY=your-secret-key
     depends_on:
       - db
@@ -23,7 +23,7 @@ services:
       POSTGRES_USER: user
       POSTGRES_PASSWORD: password
     ports:
-      - "5433:5432"
+      - "5432:5432"
     volumes:
       - postgres_data:/var/lib/postgresql/data
 
