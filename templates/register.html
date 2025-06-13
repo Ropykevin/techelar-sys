@@ -34,6 +34,7 @@
                                             <input type="text" class="form-control" id="name" name="name"
                                                 placeholder="Full Name" required>
                                             <label for="name">Full Name</label>
+                                            <div class="invalid-feedback">Please enter your full name.</div>
                                         </div>
                                     </div>
                                     <div class="col-md-6">
@@ -41,6 +42,7 @@
                                             <input type="email" class="form-control" id="email" name="email"
                                                 placeholder="Email Address" required>
                                             <label for="email">Email Address</label>
+                                            <div class="invalid-feedback">Please enter a valid email address.</div>
                                         </div>
                                     </div>
                                     <div class="col-md-6">
@@ -48,6 +50,7 @@
                                             <input type="tel" class="form-control" id="phone" name="phone"
                                                 placeholder="Phone Number" required>
                                             <label for="phone">Phone Number</label>
+                                            <div class="invalid-feedback">Please enter your phone number.</div>
                                         </div>
                                     </div>
                                 </div>
@@ -68,6 +71,7 @@
                                                     HTML, CSS, JS)</option>
                                             </select>
                                             <label for="course_type">Course Type</label>
+                                            <div class="invalid-feedback">Please select a course type.</div>
                                         </div>
                                     </div>
                                     <div class="col-md-6">
@@ -77,9 +81,11 @@
 
                                                 <!-- WordPress -->
                                                 <option value="1_month" class="wordpress-option">1 Month - WordPress
-                                                    Basics (KES 15,000)</option>
+                                                    Basics (KES 15,000)
+                                                </option>
                                                 <option value="3_months" class="wordpress-option">3 Months - Advanced
-                                                    WordPress (KES 45,000)</option>
+                                                    WordPress (KES 45,000)
+                                                </option>
 
                                                 <!-- Web Development -->
                                                 <option value="2_months" class="web-dev-option">2 Months - Web
@@ -87,15 +93,19 @@
 
                                                 <!-- Fullstack -->
                                                 <option value="4_months_fullstack" class="fullstack-option">4 Months -
-                                                    Fullstack Web Development (KES 50,000)</option>
+                                                    Fullstack Web Development
+                                                    (KES 50,000)</option>
 
                                                 <!-- Digital Marketing -->
-                                                <option value="2_month_digital" class="digital-marketing-option">2
-                                                    Months - Digital Marketing Essentials (KES 20,000)</option>
+                                                <option value="2_months_digital" class="digital-marketing-option">2
+                                                    Months - Digital Marketing
+                                                    Essentials (KES 20,000)</option>
                                                 <option value="3_months_digital" class="digital-marketing-option">3
-                                                    Months - Digital Marketing Mastery (KES 35,000)</option>
+                                                    Months - Digital Marketing
+                                                    Mastery (KES 35,000)</option>
                                             </select>
                                             <label for="duration">Course Duration</label>
+                                            <div class="invalid-feedback">Please select a course duration.</div>
                                         </div>
                                     </div>
                                     <div class="col-md-6">
@@ -103,6 +113,7 @@
                                             <input type="date" class="form-control" id="appointment_date"
                                                 name="appointment_date" required>
                                             <label for="appointment_date">Preferred Start Date</label>
+                                            <div class="invalid-feedback">Please choose a start date.</div>
                                         </div>
                                     </div>
                                 </div>
@@ -115,6 +126,7 @@
                                 </button>
                             </div>
                         </form>
+
                     </div>
                 </div>
             </div>
@@ -180,8 +192,23 @@
     </div>
 </section>
 
-<!-- JavaScript for Dynamic Duration Options -->
 <script>
+    // Enable Bootstrap validation styling
+    (function () {
+        'use strict';
+        const forms = document.querySelectorAll('.needs-validation');
+        Array.from(forms).forEach(function (form) {
+            form.addEventListener('submit', function (event) {
+                if (!form.checkValidity()) {
+                    event.preventDefault();
+                    event.stopPropagation();
+                }
+                form.classList.add('was-validated');
+            }, false);
+        });
+    })();
+
+/*JavaScript for Dynamic Duration Options */ 
     document.addEventListener("DOMContentLoaded", () => {
         const courseTypeSelect = document.getElementById('course_type');
         const durationSelect = document.getElementById('duration');

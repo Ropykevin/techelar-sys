@@ -16,7 +16,6 @@
 </section>
 
 <!-- Digital Marketing Courses -->
-<!-- Digital Marketing Courses -->
 <section class="digital-marketing-courses py-5 bg-white">
     <div class="container">
         <div class="text-center mb-5">
@@ -34,26 +33,26 @@
                             <i class="fas fa-bullhorn fa-3x text-primary"></i>
                         </div>
                         <h3 class="h4 mb-3">Digital Marketing Essentials</h3>
-                        <p class="text-muted mb-4">A hands-on beginner course covering content creation, SEO, and
-                            monetization skills.</p>
+                        <p class="text-muted mb-4">A hands-on beginner course covering content creation, SEO, and monetization skills.</p>
                         <ul class="list-unstyled mb-4">
                             <li><i class="fas fa-check-circle text-success me-2"></i>Social Media, SEO, Email, Ads</li>
-                            <li><i class="fas fa-check-circle text-success me-2"></i>Canva, ChatGPT, Branding Basics
-                            </li>
-                            <li><i class="fas fa-check-circle text-success me-2"></i>Blogging, YouTube, Email Campaigns
-                            </li>
-                            <li><i class="fas fa-check-circle text-success me-2"></i>Freelancing & Affiliate Marketing
-                            </li>
-                            <li><i class="fas fa-check-circle text-success me-2"></i>Includes 30-Day Content Calendar
-                            </li>
+                            <li><i class="fas fa-check-circle text-success me-2"></i>Canva, ChatGPT, Branding Basics</li>
+                            <li><i class="fas fa-check-circle text-success me-2"></i>Blogging, YouTube, Email Campaigns</li>
+                            <li><i class="fas fa-check-circle text-success me-2"></i>Freelancing & Affiliate Marketing</li>
+                            <li><i class="fas fa-check-circle text-success me-2"></i>Includes 30-Day Content Calendar</li>
                         </ul>
                         <div class="course-price mb-4">
                             <h4 class="text-primary mb-0">KES 20,000</h4>
                             <small class="text-muted">Full Course Fee</small>
                         </div>
-                        <a href="{{ url_for('register') }}" class="btn btn-primary w-100">
-                            <i class="fas fa-sign-in-alt me-2"></i>Enroll Now
-                        </a>
+                        <div class="d-grid gap-2 d-md-flex">
+                            <button class="btn btn-outline-primary me-md-2" data-bs-toggle="modal" data-bs-target="#digitalMarketingEssentialsModal">
+                                <i class="fas fa-info-circle me-2"></i>View Details
+                            </button>
+                            <a href="{{ url_for('register') }}" class="btn btn-primary">
+                                <i class="fas fa-sign-in-alt me-2"></i>Enroll Now
+                            </a>
+                        </div>
                     </div>
                 </div>
             </div>
@@ -67,14 +66,11 @@
                             <i class="fas fa-chart-line fa-3x text-success"></i>
                         </div>
                         <h3 class="h4 mb-3">Advanced Digital Marketing Mastery</h3>
-                        <p class="text-muted mb-4">Take your skills to expert level with funnels, paid ads, automation,
-                            and agency setup.</p>
+                        <p class="text-muted mb-4">Take your skills to expert level with funnels, paid ads, automation, and agency setup.</p>
                         <ul class="list-unstyled mb-4">
-                            <li><i class="fas fa-check-circle text-success me-2"></i>Funnel Design & Sales Psychology
-                            </li>
+                            <li><i class="fas fa-check-circle text-success me-2"></i>Funnel Design & Sales Psychology</li>
                             <li><i class="fas fa-check-circle text-success me-2"></i>Facebook & Instagram Ads</li>
-                            <li><i class="fas fa-check-circle text-success me-2"></i>SEO, Blogging & Content Authority
-                            </li>
+                            <li><i class="fas fa-check-circle text-success me-2"></i>SEO, Blogging & Content Authority</li>
                             <li><i class="fas fa-check-circle text-success me-2"></i>Professional Design & Branding</li>
                             <li><i class="fas fa-check-circle text-success me-2"></i>Client Acquisition & Scaling</li>
                         </ul>
@@ -82,17 +78,20 @@
                             <h4 class="text-success mb-0">KES 35,000</h4>
                             <small class="text-muted">Full Course Fee</small>
                         </div>
-                        <a href="{{ url_for('register') }}" class="btn btn-success w-100">
-                            <i class="fas fa-rocket me-2"></i>Start Mastery Course
-                        </a>
+                        <div class="d-grid gap-2 d-md-flex">
+                            <button class="btn btn-outline-success me-md-2" data-bs-toggle="modal" data-bs-target="#advancedDigitalMarketingModal">
+                                <i class="fas fa-info-circle me-2"></i>View Details
+                            </button>
+                            <a href="{{ url_for('register') }}" class="btn btn-success">
+                                <i class="fas fa-rocket me-2"></i>Start Mastery Course
+                            </a>
+                        </div>
                     </div>
                 </div>
             </div>
-
         </div>
     </div>
 </section>
-
 
 <!-- WordPress Development Courses -->
 <section class="wordpress-courses py-1">
@@ -111,19 +110,14 @@
                             <i class="fas fa-wordpress fa-3x text-primary"></i>
                         </div>
                         <h3 class="h4 mb-3">WordPress Basics</h3>
-                        <p class="text-muted mb-4">Perfect for beginners. Learn the fundamentals of WordPress
-                            development and website creation.</p>
+                        <p class="text-muted mb-4">Perfect for beginners. Learn the fundamentals of WordPress development and website creation.</p>
                         <div class="course-features mb-4">
                             <h5 class="mb-3">What You'll Learn:</h5>
                             <ul class="list-unstyled">
-                                <li class="mb-2"><i class="fas fa-check-circle text-success me-2"></i>WordPress
-                                    Installation & Setup</li>
-                                <li class="mb-2"><i class="fas fa-check-circle text-success me-2"></i>Theme
-                                    Customization</li>
-                                <li class="mb-2"><i class="fas fa-check-circle text-success me-2"></i>Plugin Management
-                                </li>
-                                <li class="mb-2"><i class="fas fa-check-circle text-success me-2"></i>Content Management
-                                </li>
+                                <li class="mb-2"><i class="fas fa-check-circle text-success me-2"></i>WordPress Installation & Setup</li>
+                                <li class="mb-2"><i class="fas fa-check-circle text-success me-2"></i>Theme Customization</li>
+                                <li class="mb-2"><i class="fas fa-check-circle text-success me-2"></i>Plugin Management</li>
+                                <li class="mb-2"><i class="fas fa-check-circle text-success me-2"></i>Content Management</li>
                                 <li><i class="fas fa-check-circle text-success me-2"></i>Basic SEO Optimization</li>
                             </ul>
                         </div>
@@ -131,9 +125,14 @@
                             <h4 class="text-primary mb-0">KES 15,000</h4>
                             <small class="text-muted">Full Course Fee</small>
                         </div>
-                        <a href="{{ url_for('register') }}" class="btn btn-primary w-100">
-                            <i class="fas fa-rocket me-2"></i>Register Now
-                        </a>
+                        <div class="d-grid gap-2 d-md-flex">
+                            <button class="btn btn-outline-primary me-md-2" data-bs-toggle="modal" data-bs-target="#wordpressBasicsModal">
+                                <i class="fas fa-info-circle me-2"></i>View Details
+                            </button>
+                            <a href="{{ url_for('register') }}" class="btn btn-primary">
+                                <i class="fas fa-rocket me-2"></i>Register Now
+                            </a>
+                        </div>
                     </div>
                 </div>
             </div>
@@ -147,19 +146,14 @@
                             <i class="fas fa-code fa-3x text-primary"></i>
                         </div>
                         <h3 class="h4 mb-3">Advanced WordPress</h3>
-                        <p class="text-muted mb-4">Take your WordPress skills to the next level with advanced
-                            development techniques.</p>
+                        <p class="text-muted mb-4">Take your WordPress skills to the next level with advanced development techniques.</p>
                         <div class="course-features mb-4">
                             <h5 class="mb-3">What You'll Learn:</h5>
                             <ul class="list-unstyled">
-                                <li class="mb-2"><i class="fas fa-check-circle text-success me-2"></i>Custom Theme
-                                    Development</li>
-                                <li class="mb-2"><i class="fas fa-check-circle text-success me-2"></i>Plugin Development
-                                </li>
-                                <li class="mb-2"><i class="fas fa-check-circle text-success me-2"></i>E-commerce
-                                    Integration</li>
-                                <li class="mb-2"><i class="fas fa-check-circle text-success me-2"></i>Advanced Security
-                                </li>
+                                <li class="mb-2"><i class="fas fa-check-circle text-success me-2"></i>Custom Theme Development</li>
+                                <li class="mb-2"><i class="fas fa-check-circle text-success me-2"></i>Plugin Development</li>
+                                <li class="mb-2"><i class="fas fa-check-circle text-success me-2"></i>E-commerce Integration</li>
+                                <li class="mb-2"><i class="fas fa-check-circle text-success me-2"></i>Advanced Security</li>
                                 <li><i class="fas fa-check-circle text-success me-2"></i>Performance Optimization</li>
                             </ul>
                         </div>
@@ -167,9 +161,14 @@
                             <h4 class="text-primary mb-0">KES 45,000</h4>
                             <small class="text-muted">Full Course Fee</small>
                         </div>
-                        <a href="{{ url_for('register') }}" class="btn btn-primary w-100">
-                            <i class="fas fa-rocket me-2"></i>Register Now
-                        </a>
+                        <div class="d-grid gap-2 d-md-flex">
+                            <button class="btn btn-outline-primary me-md-2" data-bs-toggle="modal" data-bs-target="#advancedWordPressModal">
+                                <i class="fas fa-info-circle me-2"></i>View Details
+                            </button>
+                            <a href="{{ url_for('register') }}" class="btn btn-primary">
+                                <i class="fas fa-rocket me-2"></i>Register Now
+                            </a>
+                        </div>
                     </div>
                 </div>
             </div>
@@ -193,18 +192,14 @@
                             <i class="fas fa-laptop-code fa-3x text-primary"></i>
                         </div>
                         <h3 class="h4 mb-3">Web Development Fundamentals</h3>
-                        <p class="text-muted mb-4">Learn the essential skills needed to build modern, responsive
-                            websites.</p>
+                        <p class="text-muted mb-4">Learn the essential skills needed to build modern, responsive websites.</p>
                         <div class="course-features mb-4">
                             <h5 class="mb-3">What You'll Learn:</h5>
                             <ul class="list-unstyled">
                                 <li class="mb-2"><i class="fas fa-check-circle text-success me-2"></i>HTML5 & CSS3</li>
-                                <li class="mb-2"><i class="fas fa-check-circle text-success me-2"></i>Bootstrap
-                                    Framework</li>
-                                <li class="mb-2"><i class="fas fa-check-circle text-success me-2"></i>Responsive Design
-                                </li>
-                                <li class="mb-2"><i class="fas fa-check-circle text-success me-2"></i>JavaScript Basics
-                                </li>
+                                <li class="mb-2"><i class="fas fa-check-circle text-success me-2"></i>Bootstrap Framework</li>
+                                <li class="mb-2"><i class="fas fa-check-circle text-success me-2"></i>Responsive Design</li>
+                                <li class="mb-2"><i class="fas fa-check-circle text-success me-2"></i>JavaScript Basics</li>
                                 <li><i class="fas fa-check-circle text-success me-2"></i>Git Version Control</li>
                             </ul>
                         </div>
@@ -212,12 +207,18 @@
                             <h4 class="text-primary mb-0">KES 25,000</h4>
                             <small class="text-muted">Full Course Fee</small>
                         </div>
-                        <a href="{{ url_for('register') }}" class="btn btn-primary w-100">
-                            <i class="fas fa-rocket me-2"></i>Register Now
-                        </a>
+                        <div class="d-grid gap-2 d-md-flex">
+                            <button class="btn btn-outline-primary me-md-2" data-bs-toggle="modal" data-bs-target="#webDevFundamentalsModal">
+                                <i class="fas fa-info-circle me-2"></i>View Details
+                            </button>
+                            <a href="{{ url_for('register') }}" class="btn btn-primary">
+                                <i class="fas fa-rocket me-2"></i>Register Now
+                            </a>
+                        </div>
                     </div>
                 </div>
             </div>
+            
             <!-- Fullstack Web Development -->
             <div class="col-md-6 mx-auto">
                 <div class="course-card h-100 border-0 shadow-sm hover-card">
@@ -235,8 +236,7 @@
                                 <li class="mb-2"><i class="fas fa-check-circle text-success me-2"></i>JavaScript (DOM & Events)</li>
                                 <li class="mb-2"><i class="fas fa-check-circle text-success me-2"></i>Python for Web</li>
                                 <li class="mb-2"><i class="fas fa-check-circle text-success me-2"></i>Flask Web Framework</li>
-                                <li class="mb-2"><i class="fas fa-check-circle text-success me-2"></i>SQL & Database Integration
-                                </li>
+                                <li class="mb-2"><i class="fas fa-check-circle text-success me-2"></i>SQL & Database Integration</li>
                                 <li><i class="fas fa-check-circle text-success me-2"></i>Form Handling & Deployment</li>
                             </ul>
                         </div>
@@ -244,16 +244,417 @@
                             <h4 class="text-primary mb-0">KES 50,000</h4>
                             <small class="text-muted">Full Course Fee</small>
                         </div>
-                        <a href="{{ url_for('register') }}" class="btn btn-primary w-100">
-                            <i class="fas fa-rocket me-2"></i>Register Now
-                        </a>
+                        <div class="d-grid gap-2 d-md-flex">
+                            <button class="btn btn-outline-success me-md-2" data-bs-toggle="modal" data-bs-target="#fullstackWebDevModal">
+                                <i class="fas fa-info-circle me-2"></i>View Details
+                            </button>
+                            <a href="{{ url_for('register') }}" class="btn btn-success">
+                                <i class="fas fa-rocket me-2"></i>Register Now
+                            </a>
+                        </div>
                     </div>
                 </div>
             </div>
-
         </div>
     </div>
 </section>
+
+<!-- Course Modals -->
+<!-- Digital Marketing Essentials Modal -->
+<div class="modal fade" id="digitalMarketingEssentialsModal" tabindex="-1" aria-labelledby="digitalMarketingEssentialsModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-lg modal-dialog-centered">
+        <div class="modal-content">
+            <div class="modal-header bg-primary text-white">
+                <h5 class="modal-title" id="digitalMarketingEssentialsModalLabel">Digital Marketing Essentials - Course Details</h5>
+                <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+                <div class="course-details">
+                    <h4 class="mb-4">5-Week Course Structure</h4>
+                    
+                    <div class="week-section mb-4">
+                        <h5><span class="badge bg-primary">Week 1</span> Foundations of Digital Marketing</h5>
+                        <ul>
+                            <li>Introduction to digital marketing landscape</li>
+                            <li>Creating effective social media profiles</li>
+                            <li>Content creation with Canva</li>
+                            <li>Project: Develop personal brand strategy</li>
+                        </ul>
+                    </div>
+                    
+                    <div class="week-section mb-4">
+                        <h5><span class="badge bg-primary">Week 2</span> Content & SEO</h5>
+                        <ul>
+                            <li>SEO fundamentals and keyword research</li>
+                            <li>Blogging for business</li>
+                            <li>YouTube channel setup</li>
+                            <li>Project: Create SEO-optimized blog post</li>
+                        </ul>
+                    </div>
+                    
+                    <div class="week-section mb-4">
+                        <h5><span class="badge bg-primary">Week 3</span> Social Media & Email Marketing</h5>
+                        <ul>
+                            <li>Platform-specific strategies</li>
+                            <li>Email campaign creation</li>
+                            <li>Automation tools</li>
+                            <li>Project: Design email sequence</li>
+                        </ul>
+                    </div>
+                    
+                    <div class="week-section mb-4">
+                        <h5><span class="badge bg-primary">Week 4</span> Monetization Strategies</h5>
+                        <ul>
+                            <li>Affiliate marketing</li>
+                            <li>Freelancing basics</li>
+                            <li>Client acquisition</li>
+                            <li>Project: Create affiliate campaign</li>
+                        </ul>
+                    </div>
+                    
+                    <div class="week-section">
+                        <h5><span class="badge bg-primary">Week 5</span> Implementation & Review</h5>
+                        <ul>
+                            <li>30-day content calendar creation</li>
+                            <li>Performance tracking</li>
+                            <li>Final project presentation</li>
+                            <li>Project: Complete marketing portfolio</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                <a href="{{ url_for('register') }}" class="btn btn-primary">Enroll Now</a>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- Advanced Digital Marketing Mastery Modal -->
+<div class="modal fade" id="advancedDigitalMarketingModal" tabindex="-1" aria-labelledby="advancedDigitalMarketingModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-lg modal-dialog-centered">
+        <div class="modal-content">
+            <div class="modal-header bg-success text-white">
+                <h5 class="modal-title" id="advancedDigitalMarketingModalLabel">Advanced Digital Marketing Mastery - Course Details</h5>
+                <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+                <div class="course-details">
+                    <h4 class="mb-4">6-Week Course Structure</h4>
+                    
+                    <div class="week-section mb-4">
+                        <h5><span class="badge bg-success">Week 1</span> Advanced Funnel Design</h5>
+                        <ul>
+                            <li>Sales psychology principles</li>
+                            <li>Lead magnet creation</li>
+                            <li>Email sequence design</li>
+                            <li>Project: Build complete sales funnel</li>
+                        </ul>
+                    </div>
+                    
+                    <div class="week-section mb-4">
+                        <h5><span class="badge bg-success">Week 2</span> Paid Advertising Mastery</h5>
+                        <ul>
+                            <li>Facebook Ads Manager deep dive</li>
+                            <li>Instagram advertising strategies</li>
+                            <li>Audience targeting & retargeting</li>
+                            <li>Project: Create and launch ad campaign</li>
+                        </ul>
+                    </div>
+                    
+                    <div class="week-section mb-4">
+                        <h5><span class="badge bg-success">Week 3</span> Advanced SEO & Content Authority</h5>
+                        <ul>
+                            <li>Technical SEO implementation</li>
+                            <li>Backlink building strategies</li>
+                            <li>Content clusters and pillar pages</li>
+                            <li>Project: SEO audit and optimization</li>
+                        </ul>
+                    </div>
+                    
+                    <div class="week-section mb-4">
+                        <h5><span class="badge bg-success">Week 4</span> Professional Branding & Design</h5>
+                        <ul>
+                            <li>Advanced Canva techniques</li>
+                            <li>Brand identity development</li>
+                            <li>Professional presentation skills</li>
+                            <li>Project: Create brand style guide</li>
+                        </ul>
+                    </div>
+                    
+                    <div class="week-section mb-4">
+                        <h5><span class="badge bg-success">Week 5</span> Client Acquisition & Scaling</h5>
+                        <ul>
+                            <li>Pricing strategies</li>
+                            <li>Contract development</li>
+                            <li>Client onboarding processes</li>
+                            <li>Project: Develop client proposal</li>
+                        </ul>
+                    </div>
+                    
+                    <div class="week-section">
+                        <h5><span class="badge bg-success">Week 6</span> Agency Setup & Growth</h5>
+                        <ul>
+                            <li>Business registration basics</li>
+                            <li>Team building & delegation</li>
+                            <li>Scaling strategies</li>
+                            <li>Project: Present business growth plan</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                <a href="{{ url_for('register') }}" class="btn btn-success">Enroll Now</a>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- WordPress Basics Modal -->
+<div class="modal fade" id="wordpressBasicsModal" tabindex="-1" aria-labelledby="wordpressBasicsModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-lg modal-dialog-centered">
+        <div class="modal-content">
+            <div class="modal-header bg-primary text-white">
+                <h5 class="modal-title" id="wordpressBasicsModalLabel">WordPress Basics - Course Details</h5>
+                <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+                <div class="course-details">
+                    <h4 class="mb-4">4-Week Course Structure</h4>
+                    
+                    <div class="week-section mb-4">
+                        <h5><span class="badge bg-primary">Week 1</span> WordPress Fundamentals</h5>
+                        <ul>
+                            <li>Introduction to CMS</li>
+                            <li>Installation and setup</li>
+                            <li>Dashboard navigation</li>
+                            <li>Project: Install WordPress locally</li>
+                        </ul>
+                    </div>
+                    
+                    <div class="week-section mb-4">
+                        <h5><span class="badge bg-primary">Week 2</span> Content Management</h5>
+                        <ul>
+                            <li>Posts vs Pages</li>
+                            <li>Categories and tags</li>
+                            <li>Media library management</li>
+                            <li>Project: Build blog with 5 posts</li>
+                        </ul>
+                    </div>
+                    
+                    <div class="week-section mb-4">
+                        <h5><span class="badge bg-primary">Week 3</span> Themes & Customization</h5>
+                        <ul>
+                            <li>Theme selection and installation</li>
+                            <li>Customizer options</li>
+                            <li>Widgets and menus</li>
+                            <li>Project: Customize a theme</li>
+                        </ul>
+                    </div>
+                    
+                    <div class="week-section">
+                        <h5><span class="badge bg-primary">Week 4</span> Plugins & Maintenance</h5>
+                        <ul>
+                            <li>Essential plugins</li>
+                            <li>SEO basics</li>
+                            <li>Security and backups</li>
+                            <li>Project: Optimize a WordPress site</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                <a href="{{ url_for('register') }}" class="btn btn-primary">Enroll Now</a>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- Advanced WordPress Modal -->
+<div class="modal fade" id="advancedWordPressModal" tabindex="-1" aria-labelledby="advancedWordPressModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-lg modal-dialog-centered">
+        <div class="modal-content">
+            <div class="modal-header bg-primary text-white">
+                <h5 class="modal-title" id="advancedWordPressModalLabel">Advanced WordPress - Course Details</h5>
+                <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+                <div class="course-details">
+                    <h4 class="mb-4">12-Week Course Structure</h4>
+                    
+                    <div class="week-section mb-4">
+                        <h5><span class="badge bg-primary">Weeks 1-3</span> Theme Development</h5>
+                        <ul>
+                            <li>WordPress template hierarchy</li>
+                            <li>Creating custom themes</li>
+                            <li>Template tags and functions</li>
+                            <li>Project: Build custom theme</li>
+                        </ul>
+                    </div>
+                    
+                    <div class="week-section mb-4">
+                        <h5><span class="badge bg-primary">Weeks 4-6</span> Plugin Development</h5>
+                        <ul>
+                            <li>Plugin architecture</li>
+                            <li>Custom post types</li>
+                            <li>Shortcodes and widgets</li>
+                            <li>Project: Develop custom plugin</li>
+                        </ul>
+                    </div>
+                    
+                    <div class="week-section mb-4">
+                        <h5><span class="badge bg-primary">Weeks 7-9</span> E-commerce Integration</h5>
+                        <ul>
+                            <li>WooCommerce setup</li>
+                            <li>Payment gateways</li>
+                            <li>Product management</li>
+                            <li>Project: Build online store</li>
+                        </ul>
+                    </div>
+                    
+                    <div class="week-section">
+                        <h5><span class="badge bg-primary">Weeks 10-12</span> Performance & Security</h5>
+                        <ul>
+                            <li>Caching strategies</li>
+                            <li>Database optimization</li>
+                            <li>Security hardening</li>
+                            <li>Project: Optimize live site</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                <a href="{{ url_for('register') }}" class="btn btn-primary">Enroll Now</a>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- Web Development Fundamentals Modal -->
+<div class="modal fade" id="webDevFundamentalsModal" tabindex="-1" aria-labelledby="webDevFundamentalsModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-lg modal-dialog-centered">
+        <div class="modal-content">
+            <div class="modal-header bg-primary text-white">
+                <h5 class="modal-title" id="webDevFundamentalsModalLabel">Web Development Fundamentals - Course Details</h5>
+                <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+                <div class="course-details">
+                    <h4 class="mb-4">8-Week Course Structure</h4>
+                    
+                    <div class="week-section mb-4">
+                        <h5><span class="badge bg-primary">Weeks 1-2</span> HTML5 Foundations</h5>
+                        <ul>
+                            <li>Document structure</li>
+                            <li>Semantic HTML</li>
+                            <li>Forms and inputs</li>
+                            <li>Project: Personal profile page</li>
+                        </ul>
+                    </div>
+                    
+                    <div class="week-section mb-4">
+                        <h5><span class="badge bg-primary">Weeks 3-4</span> CSS3 Styling</h5>
+                        <ul>
+                            <li>Selectors and specificity</li>
+                            <li>Box model</li>
+                            <li>Flexbox and Grid</li>
+                            <li>Project: Styled portfolio site</li>
+                        </ul>
+                    </div>
+                    
+                    <div class="week-section mb-4">
+                        <h5><span class="badge bg-primary">Weeks 5-6</span> Bootstrap Framework</h5>
+                        <ul>
+                            <li>Responsive design principles</li>
+                            <li>Bootstrap components</li>
+                            <li>Customizing Bootstrap</li>
+                            <li>Project: Responsive business site</li>
+                        </ul>
+                    </div>
+                    
+                    <div class="week-section">
+                        <h5><span class="badge bg-primary">Weeks 7-8</span> JavaScript Basics</h5>
+                        <ul>
+                            <li>DOM manipulation</li>
+                            <li>Event handling</li>
+                            <li>Basic animations</li>
+                            <li>Project: Interactive web app</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                <a href="{{ url_for('register') }}" class="btn btn-primary">Enroll Now</a>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- Fullstack Web Development Modal -->
+<div class="modal fade" id="fullstackWebDevModal" tabindex="-1" aria-labelledby="fullstackWebDevModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-lg modal-dialog-centered">
+        <div class="modal-content">
+            <div class="modal-header bg-success text-white">
+                <h5 class="modal-title" id="fullstackWebDevModalLabel">Fullstack Web Development - Course Details</h5>
+                <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+                <div class="course-details">
+                    <h4 class="mb-4">16-Week Course Structure</h4>
+                    
+                    <div class="week-section mb-4">
+                        <h5><span class="badge bg-success">Weeks 1-4</span> Frontend Development</h5>
+                        <ul>
+                            <li>Advanced HTML/CSS</li>
+                            <li>JavaScript ES6+</li>
+                            <li>DOM manipulation</li>
+                            <li>Project: Interactive frontend app</li>
+                        </ul>
+                    </div>
+                    
+                    <div class="week-section mb-4">
+                        <h5><span class="badge bg-success">Weeks 5-8</span> Python Fundamentals</h5>
+                        <ul>
+                            <li>Python syntax</li>
+                            <li>Data structures</li>
+                            <li>Object-oriented programming</li>
+                            <li>Project: Python console apps</li>
+                        </ul>
+                    </div>
+                    
+                    <div class="week-section mb-4">
+                        <h5><span class="badge bg-success">Weeks 9-12</span> Flask Web Framework</h5>
+                        <ul>
+                            <li>Routing and views</li>
+                            <li>Templates with Jinja2</li>
+                            <li>Form handling</li>
+                            <li>Project: Basic Flask web app</li>
+                        </ul>
+                    </div>
+                    
+                    <div class="week-section">
+                        <h5><span class="badge bg-success">Weeks 13-16</span> Database Integration</h5>
+                        <ul>
+                            <li>SQL fundamentals</li>
+                            <li>Database design</li>
+                            <li>Flask-SQLAlchemy</li>
+                            <li>Project: Fullstack application</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                <a href="{{ url_for('register') }}" class="btn btn-success">Enroll Now</a>
+            </div>
+        </div>
+    </div>
+</div>
 
 <!-- Course Features -->
 <section class="course-features py-5">
@@ -269,8 +670,7 @@
                         <i class="fas fa-laptop-code fa-3x text-primary"></i>
                     </div>
                     <h4 class="mb-3">Hands-on Training</h4>
-                    <p class="text-muted">Learn by doing with practical exercises and real-world projects that build
-                        your portfolio.</p>
+                    <p class="text-muted">Learn by doing with practical exercises and real-world projects that build your portfolio.</p>
                 </div>
             </div>
             <div class="col-md-4">
@@ -279,8 +679,7 @@
                         <i class="fas fa-certificate fa-3x text-primary"></i>
                     </div>
                     <h4 class="mb-3">Certification</h4>
-                    <p class="text-muted">Earn industry-recognized certificates that validate your skills and boost your
-                        career.</p>
+                    <p class="text-muted">Earn industry-recognized certificates that validate your skills and boost your career.</p>
                 </div>
             </div>
             <div class="col-md-4">
@@ -312,4 +711,84 @@
         </div>
     </div>
 </section>
+
+<style>
+    /* Course Modals */
+    .modal-content {
+        border-radius: 10px;
+        overflow: hidden;
+    }
+
+    .week-section {
+        background-color: #f8f9fa;
+        border-left: 4px solid #0d6efd;
+        padding: 15px;
+        margin-bottom: 20px;
+        border-radius: 0 5px 5px 0;
+    }
+
+    .week-section h5 {
+        font-size: 1.1rem;
+        margin-bottom: 10px;
+        display: flex;
+        align-items: center;
+    }
+
+    .week-section h5 .badge {
+        margin-right: 10px;
+    }
+
+    .week-section ul {
+        padding-left: 20px;
+    }
+
+    .week-section li {
+        margin-bottom: 8px;
+        position: relative;
+    }
+
+    .modal-header {
+        padding: 1.5rem;
+    }
+
+    .modal-body {
+        padding: 2rem;
+    }
+
+    .modal-footer {
+        padding: 1rem 2rem;
+    }
+
+    /* Additional styles for course cards */
+    .hover-card {
+        transition: transform 0.3s ease, box-shadow 0.3s ease;
+    }
+
+    .hover-card:hover {
+        transform: translateY(-5px);
+        box-shadow: 0 10px 20px rgba(0,0,0,0.1);
+    }
+
+    .course-badge {
+        position: absolute;
+        top: 15px;
+        right: 15px;
+        padding: 5px 10px;
+        border-radius: 20px;
+        font-size: 0.8rem;
+        font-weight: 600;
+    }
+
+    .icon-box {
+        width: 70px;
+        height: 70px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        background-color: rgba(13, 110, 253, 0.1);
+        border-radius: 50%;
+        margin-bottom: 20px;
+    }
+</style>
+
 {% endblock %}

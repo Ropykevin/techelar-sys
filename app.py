@@ -23,7 +23,8 @@ load_dotenv()
 
 app = Flask(__name__)
 app.config['SECRET_KEY'] = os.urandom(24)
-app.config['SQLALCHEMY_DATABASE_URI'] = 'sqlite:///techelar.db'
+# app.config['SQLALCHEMY_DATABASE_URI'] = 'sqlite:///techelar.db'
+app.config['SQLALCHEMY_DATABASE_URI'] = 'postgresql://techelar_user:Kevin254!@69.197.187.23:5432/techelar?sslmode=disable'
 app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False
 
 # Email Configuration
@@ -201,6 +202,8 @@ def register():
             course_type = request.form['course_type']
             duration = request.form['duration']
             phone = request.form['phone']
+            print(course_type)
+            print(duration)
             # Determine course cost based on course type and duration
             if course_type == 'wordpress':
                 if duration == '1_month':
@@ -212,8 +215,18 @@ def register():
             elif course_type == 'web_dev':
                 if duration == '2_months':
                     payment_amount = 25000
+                    
                 else:
-                    payment_amount = 0
+                    payment_amount = 50000
+            elif course_type == 'digital_marketing':
+                if duration == '2_months_digital':
+                    payment_amount = 20000
+                else:
+                    payment_amount = 35000
+            elif course_type == 'fullstack':
+                print(duration)
+                if duration == '4_months_fullstack':
+                    payment_amount = 50000
             else:
                 payment_amount = 0
 
@@ -245,6 +258,7 @@ def register():
 @app.route('/admission-letter/<admission_number>')
 def admission_letter(admission_number):
     registration = Registration.query.filter_by(admission_number=admission_number).first_or_404()
+    print(registration.course_type)
     return render_template('admission_letter.html', registration=registration)
 
 @app.route('/download-admission-letter/<admission_number>')
@@ -252,10 +266,8 @@ def download_admission_letter(admission_number):
     """Generate and download admission letter as PDF"""
     try:
         registration = Registration.query.filter_by(admission_number=admission_number).first_or_404()
-        
-        # Create a temporary file
+
         with tempfile.NamedTemporaryFile(suffix='.pdf', delete=False) as tmp:
-            # Create the PDF document
             doc = SimpleDocTemplate(
                 tmp.name,
                 pagesize=A4,
@@ -264,32 +276,20 @@ def download_admission_letter(admission_number):
                 topMargin=72,
                 bottomMargin=72
             )
-            
-            # Create styles
+
             styles = getSampleStyleSheet()
-            title_style = ParagraphStyle(
-                'CustomTitle',
-                parent=styles['Heading1'],
-                fontSize=24,
-                spaceAfter=30
-            )
-            heading_style = ParagraphStyle(
-                'CustomHeading',
-                parent=styles['Heading2'],
-                fontSize=16,
-                spaceAfter=12
-            )
+            title_style = ParagraphStyle('CustomTitle', parent=styles['Heading1'], fontSize=24, spaceAfter=30)
+            heading_style = ParagraphStyle('CustomHeading', parent=styles['Heading2'], fontSize=16, spaceAfter=12)
             normal_style = styles['Normal']
-            
-            # Build the PDF content
+
             content = []
-            
-            # Title
-            content.append(Paragraph("TECHELAR WEB DEVELOPMENT TRAINING", title_style))
+
+            # Header
+            content.append(Paragraph("TECHELAR DIGITAL HUB", title_style))
             content.append(Paragraph("Nairobi, Kenya", normal_style))
             content.append(Spacer(1, 20))
-            
-            # Date and Student Info
+
+            # Date and Personal Info
             content.append(Paragraph(f"Date: {registration.created_at.strftime('%B %d, %Y')}", normal_style))
             content.append(Paragraph(f"Admission Number: {registration.admission_number}", normal_style))
             content.append(Paragraph(f"Name: {registration.name}", normal_style))
@@ -297,40 +297,66 @@ def download_admission_letter(admission_number):
                 content.append(Paragraph(f"Business Name: {registration.business_name}", normal_style))
             content.append(Paragraph(f"Email: {registration.email}", normal_style))
             content.append(Spacer(1, 20))
-            
+
             # Greeting
             content.append(Paragraph(f"Dear {registration.name},", normal_style))
-            content.append(Paragraph("We are pleased to inform you that your application for admission to TechElar Web Development Training has been accepted. This letter serves as your official admission confirmation.", normal_style))
+            content.append(Paragraph(
+                "We are pleased to inform you that your application for admission to TechElar Digital Hub has been accepted. This letter serves as your official admission confirmation.",
+                normal_style))
             content.append(Spacer(1, 20))
-            
-            # Course Details
-            content.append(Paragraph("Course Details:", heading_style))
+
+            # Course Type Mapping
+            course_type_map = {
+                'wordpress': 'WordPress Development',
+                'webdev': 'Web Development (HTML, CSS, Bootstrap)',
+                'fullstack': 'Fullstack Web Development (Python Flask, SQL, HTML, CSS, JS)',
+                'digital_marketing': 'Digital Marketing (SEO, Social Media, Email Marketing)',
+                'data_science': 'Data Science (Python, Pandas, Machine Learning)',
+                'mobile_dev': 'Mobile App Development (Flutter)',
+                'backend': 'Backend Development with Node.js and Express',
+                'uiux': 'UI/UX Design Fundamentals'
+            }
+
+            # Duration Mapping (could be expanded if needed)
+            duration_map = {
+                '1_month': '1 Month',
+                '2_months': '2 Months',
+                '3_months': '3 Months',
+                '2_months_digital': '2 Months',
+                '4_months_fullstack': '4 Months',
+                '3_months_digital': '4 Months',
+                
+                '6_weeks': '6 Weeks'
+            }
+
             course_data = [
-                ["Course Type:", "WordPress Development" if registration.course_type == 'wordpress' else "Web Development (HTML, CSS, Bootstrap)"],
-                ["Duration:", f"{'WordPress Basics (1 Month)' if registration.duration == '1_month' else 'Advanced WordPress (3 Months)' if registration.duration == '3_months' else 'Web Development (2 Months)'}"],
+                ["Course Type:", course_type_map.get(registration.course_type, "Unknown Course")],
+                ["Duration:", duration_map.get(registration.duration, "Custom Duration")],
                 ["Start Date:", registration.appointment_date.strftime('%B %d, %Y')],
                 ["Course Fee:", f"KES {registration.payment_amount:.2f}"]
             ]
+
             course_table = Table(course_data, colWidths=[2*inch, 4*inch])
             course_table.setStyle(TableStyle([
                 ('GRID', (0, 0), (-1, -1), 1, colors.black),
                 ('BACKGROUND', (0, 0), (0, -1), colors.lightgrey),
                 ('PADDING', (0, 0), (-1, -1), 6),
             ]))
+            content.append(Paragraph("Course Details:", heading_style))
             content.append(course_table)
             content.append(Spacer(1, 20))
-            
-            # Payment Instructions
-            content.append(Paragraph("PAYMENT INSTRUCTIONS", heading_style))
 
-            # Calculate weekly installment amount based on course duration
-            if registration.course_type == 'wordpress':
-                if registration.duration == '1_month':
-                    weeks = 4
-                else:  # 3_months
-                    weeks = 12
-            else:  # web_dev
-                weeks = 8  # 2_months
+            # Payment Calculations
+            if registration.duration == '1_month':
+                weeks = 4
+            elif registration.duration == '3_months':
+                weeks = 12
+            elif registration.duration == '2_months':
+                weeks = 8
+            elif registration.duration == '6_weeks':
+                weeks = 6
+            else:
+                weeks = 8  # default fallback
 
             weekly_amount = registration.payment_amount / weeks
 
@@ -371,37 +397,35 @@ def download_admission_letter(admission_number):
             <br/><br/>
             After payment, please keep your M-Pesa confirmation message for reference.
             """
+            content.append(Paragraph("PAYMENT INSTRUCTIONS", heading_style))
             content.append(Paragraph(payment_text, normal_style))
             content.append(Spacer(1, 20))
-            
+
             # Next Steps
             content.append(Paragraph("Next Steps:", heading_style))
             next_steps = [
                 "1. Complete your payment using the M-Pesa instructions above",
                 "2. Save this admission letter for your records",
-                
             ]
             for step in next_steps:
                 content.append(Paragraph(step, normal_style))
             content.append(Spacer(1, 20))
-            
+
             # Closing
             content.append(Paragraph("We look forward to welcoming you to TechElar and helping you achieve your web development goals!", normal_style))
             content.append(Spacer(1, 20))
             content.append(Paragraph("Best regards,", normal_style))
             content.append(Paragraph("The TechElar Team", normal_style))
-            
-            # Build the PDF
+
             doc.build(content)
-            
-            # Send the file
+
             return send_file(
                 tmp.name,
                 as_attachment=True,
                 download_name=f'admission_letter_{admission_number}.pdf',
                 mimetype='application/pdf'
             )
-            
+
     except Exception as e:
         print(f"Error generating PDF: {str(e)}")
         flash('Error generating admission letter. Please try again.', 'error')
