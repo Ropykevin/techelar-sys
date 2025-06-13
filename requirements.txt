@@ -10,3 +10,4 @@ gunicorn==21.2.0
 mysqlclient==2.2.4
 PyMySQL==1.1.0
 cryptography==42.0.5 
+psycopg2-binary==2.9.6

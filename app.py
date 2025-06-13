@@ -25,6 +25,8 @@ app = Flask(__name__)
 app.config['SECRET_KEY'] = os.urandom(24)
 # app.config['SQLALCHEMY_DATABASE_URI'] = 'sqlite:///techelar.db'
 app.config['SQLALCHEMY_DATABASE_URI'] = 'postgresql://techelar_user:Kevin254!@69.197.187.23:5432/techelar?sslmode=disable'
+# app.config['SQLALCHEMY_DATABASE_URI'] = 'postgresql://postgres:Kevin254!@localhost:5432/techelar'
+
 app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False
 
 # Email Configuration
