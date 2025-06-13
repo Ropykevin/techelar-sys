@@ -16,6 +16,7 @@ from reportlab.lib.styles import getSampleStyleSheet, ParagraphStyle
 from reportlab.lib.units import inch
 import tempfile
 from werkzeug.middleware.proxy_fix import ProxyFix
+from flask_migrate import Migrate
 
 
 
@@ -38,6 +39,7 @@ app.config['MAIL_PASSWORD'] = os.getenv('MAIL_PASSWORD')
 app.config['MAIL_DEFAULT_SENDER'] = os.getenv('MAIL_DEFAULT_SENDER')
 
 db = SQLAlchemy(app)
+migrate = Migrate(app, db)
 
 app.wsgi_app = ProxyFix(app.wsgi_app, x_for=1, x_proto=1)
 
