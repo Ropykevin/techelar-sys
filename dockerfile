@@ -13,7 +13,7 @@ RUN pip install --upgrade pip \
 
 RUN pip install psycopg2-binary
 # Copy over the Flask application code to the app directory in the container
-COPY . .
+COPY ./. /app
 
 # copy .env
 COPY .env .env
