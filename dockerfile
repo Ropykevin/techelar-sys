@@ -1,27 +1,19 @@
-# Use official Python slim image
-FROM python:3.12-slim
+# Use the tiangolo/uwsgi-nginx-flask image with Python 3.9
+FROM tiangolo/uwsgi-nginx-flask:python3.9
 
-# Set working directory
-WORKDIR /app
+# Set environment variables to prevent Python from buffering outputs
+ENV PYTHONUNBUFFERED=1
 
-# Install system dependencies for building Python packages
-RUN apt-get update && apt-get install -y \
-    gcc \
-    pkg-config \
-    default-libmysqlclient-dev \
-    libpq-dev \
-    build-essential \
-    && rm -rf /var/lib/apt/lists/*
+# Copy requirements.txt into a temporary location in the container
+COPY requirements.txt /tmp/
 
-# Copy requirements and install Python dependencies
-COPY requirements.txt .
-RUN pip install --no-cache-dir -r requirements.txt
+# Upgrade pip and install Python packages listed in requirements.txt
+RUN pip install --upgrade pip \
+    && pip install --no-cache-dir -r /tmp/requirements.txt
 
-# Copy application code
+RUN pip install psycopg2-binary
+# Copy over the Flask application code to the app directory in the container
 COPY . .
 
-# Expose the port your app runs on
-EXPOSE 5010
-
-# Run the app with gunicorn
-CMD ["gunicorn", "--bind", "0.0.0.0:5010", "app:app"]
+# copy .env
+COPY .env .env
