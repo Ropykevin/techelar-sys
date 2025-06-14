@@ -1,0 +1,256 @@
+{% extends "base.html" %}
+
+{% block title %}Checkout - WordPress Course Platform{% endblock %}
+
+{% block content %}
+<div class="row justify-content-center py-5">
+    <div class="col-md-8">
+        <div class="card" data-payment-amount="{{ registration.payment_amount }}">
+            <div class="card-header bg-primary text-white">
+                <h3 class="mb-0">Checkout</h3>
+            </div>
+            <div class="card-body">
+                <!-- Order Summary -->
+                <div class="mb-4">
+                    <h4>Order Summary</h4>
+                    <div class="table-responsive">
+                        <table class="table">
+                            <tbody>
+                                <tr>
+                                    <td>Admission Number:</td>
+                                    <td><strong>{{ registration.admission_number }}</strong></td>
+                                </tr>
+                                <tr>
+                                    <td>Name:</td>
+                                    <td>{{ registration.name }}</td>
+                                </tr>
+                                <tr>
+                                    <td>Email:</td>
+                                    <td>{{ registration.email }}</td>
+                                </tr>
+                                <tr>
+                                    <td>Start Date:</td>
+                                    <td>{{ registration.appointment_date.strftime('%B %d, %Y') }}</td>
+                                </tr>
+                                {% if registration.business_name %}
+                                <tr>
+                                    <td>Business Name:</td>
+                                    <td>{{ registration.business_name }}</td>
+                                </tr>
+                                {% endif %}
+                                <tr>
+                                    <td>Course Type:</td>
+                                    <td>
+                                        {% if registration.course_type == 'wordpress' %}
+                                        WordPress Development
+                                        {% elif registration.course_type == 'web_dev' %}
+                                        Web Development (HTML, CSS, Bootstrap)
+                                        {% endif %}
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>Course Duration:</td>
+                                    <td>
+                                        {% if registration.course_type == 'wordpress' %}
+                                        {% if registration.duration == '1_month' %}
+                                        WordPress Basics (1 Month) - KES 15,000
+                                        {% elif registration.duration == '3_months' %}
+                                        Advanced WordPress (3 Months) - KES 45,000
+                                        {% endif %}
+                                        {% elif registration.course_type == 'web_dev' %}
+                                        {% if registration.duration == '2_months' %}
+                                        Web Development (2 Months) - KES 25,000
+                                        {% endif %}
+                                        {% endif %}
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>Full Course Cost:</td>
+                                    <td><strong>KES {{ "%.2f"|format(registration.payment_amount) }}</strong></td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+
+                <!-- Payment Options -->
+                <div class="payment-options mb-4">
+                    <h4>Payment Options</h4>
+                    <div class="form-check mb-3">
+                        <input class="form-check-input" type="radio" name="payment_type" id="full_payment" value="full"
+                            checked>
+                        <label class="form-check-label" for="full_payment">
+                            Pay Full Amount (KES {{ "%.2f"|format(registration.payment_amount) }})
+                        </label>
+                    </div>
+                    <div class="form-check mb-3">
+                        <input class="form-check-input" type="radio" name="payment_type" id="weekly_payment"
+                            value="weekly">
+                        <label class="form-check-label" for="weekly_payment">
+                            Pay Weekly Installment
+                        </label>
+                    </div>
+                </div>
+
+                <!-- Weekly Payment Calculator -->
+                <div id="weekly_calculator" class="mb-4" style="display: none;">
+                    <h4>Weekly Payment Calculator</h4>
+                    <div class="alert alert-info">
+                        <p class="mb-2">Calculate your weekly payment:</p>
+                        <div class="row">
+                            <div class="col-md-6">
+                                <div class="mb-3">
+                                    <label for="number_of_weeks" class="form-label">Number of Weeks</label>
+                                    <input type="number" class="form-control" id="number_of_weeks" min="1" max="12"
+                                        value="1">
+                                </div>
+                            </div>
+                            <div class="col-md-6">
+                                <div class="mb-3">
+                                    <label class="form-label">Weekly Amount</label>
+                                    <input type="text" class="form-control" id="weekly_amount" readonly>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- M-Pesa Payment Instructions -->
+                <div class="mpesa-payment-section mb-4">
+                    <h4>M-Pesa Payment Instructions</h4>
+                    <div class="alert alert-info">
+                        <p class="mb-2"><strong>Pay via M-Pesa:</strong></p>
+                        <ol class="mb-0">
+                            <li>Go to your M-Pesa menu</li>
+                            <li>Select "Pay Bill"</li>
+                            <li>Enter Business Number: <strong>542542</strong></li>
+                            <li>Enter Account Number: <strong>00105076123550</strong></li>
+                            <li>Enter Amount: <strong id="payment_amount_display">KES {{
+                                    "%.2f"|format(registration.payment_amount) }}</strong></li>
+                            <li>Enter your M-Pesa PIN</li>
+                            <li>Confirm the payment</li>
+                        </ol>
+                    </div>
+                </div>
+
+                <!-- M-Pesa Phone Number Form -->
+                <form method="POST" action="{{ url_for('process_payment', registration_id=registration.id) }}"
+                    id="payment_form">
+                    <input type="hidden" name="payment_amount" id="final_payment_amount"
+                        value="{{ registration.payment_amount }}">
+                    <div class="mb-3">
+                        <label for="phone_number" class="form-label">M-Pesa Phone Number</label>
+                        <input type="tel" class="form-control" id="phone_number" name="phone_number"
+                            placeholder="e.g., 0742670714" pattern="^(?:254|\+254|0)?([7-9]{1}[0-9]{8})$" required>
+                        <small class="text-muted">Enter the phone number registered with M-Pesa</small>
+                    </div>
+
+                    <div class="d-grid">
+                        <button type="submit" class="btn btn-success btn-lg">
+                            <i class="fas fa-mobile-alt me-2"></i>Pay with M-Pesa
+                        </button>
+                    </div>
+                </form>
+
+                <!-- Payment Security Notice -->
+                <div class="mt-4">
+                    <div class="alert alert-light border">
+                        <i class="fas fa-shield-alt text-success me-2"></i>
+                        <small>Your payment is secure. We use M-Pesa's secure payment system to process your
+                            transaction.</small>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<script>
+    document.addEventListener('DOMContentLoaded', function () {
+        // Get DOM elements
+        const fullPayment = document.getElementById('full_payment');
+        const weeklyPayment = document.getElementById('weekly_payment');
+        const weeklyCalculator = document.getElementById('weekly_calculator');
+        const numberOfWeeks = document.getElementById('number_of_weeks');
+        const weeklyAmount = document.getElementById('weekly_amount');
+        const paymentAmountDisplay = document.getElementById('payment_amount_display');
+        const finalPaymentAmount = document.getElementById('final_payment_amount');
+        const fullAmount = parseFloat(document.querySelector('.card').dataset.paymentAmount);
+        const phoneInput = document.getElementById('phone_number');
+        const paymentForm = document.getElementById('payment_form');
+
+        // Function to format currency
+        function formatCurrency(amount) {
+            return `KES ${amount.toFixed(2)}`;
+        }
+
+        // Function to update payment amount
+        function updatePaymentAmount() {
+            if (weeklyPayment.checked) {
+                const weeks = parseInt(numberOfWeeks.value);
+                const weeklyPaymentAmount = Math.ceil(fullAmount / weeks);
+                weeklyAmount.value = formatCurrency(weeklyPaymentAmount);
+                paymentAmountDisplay.textContent = formatCurrency(weeklyPaymentAmount);
+                finalPaymentAmount.value = weeklyPaymentAmount;
+            } else {
+                paymentAmountDisplay.textContent = formatCurrency(fullAmount);
+                finalPaymentAmount.value = fullAmount;
+            }
+        }
+
+        // Event listeners for payment type selection
+        fullPayment.addEventListener('change', function () {
+            weeklyCalculator.style.display = 'none';
+            updatePaymentAmount();
+        });
+
+        weeklyPayment.addEventListener('change', function () {
+            weeklyCalculator.style.display = 'block';
+            updatePaymentAmount();
+        });
+
+        // Event listeners for weekly payment calculator
+        numberOfWeeks.addEventListener('change', updatePaymentAmount);
+        numberOfWeeks.addEventListener('input', updatePaymentAmount);
+
+        // Phone number validation
+        function validatePhoneNumber(phone) {
+            const phoneRegex = /^(?:254|\+254|0)?([7-9]{1}[0-9]{8})$/;
+            return phoneRegex.test(phone);
+        }
+
+        // Form submission validation
+        paymentForm.addEventListener('submit', function (event) {
+            const phone = phoneInput.value.trim();
+
+            if (!validatePhoneNumber(phone)) {
+                event.preventDefault();
+                alert('Please enter a valid M-Pesa phone number (e.g., 07XXXXXXXX or +254XXXXXXXXX)');
+                phoneInput.focus();
+                return;
+            }
+
+            // Format phone number before submission
+            if (phone.startsWith('0')) {
+                phoneInput.value = '254' + phone.substring(1);
+            } else if (phone.startsWith('+')) {
+                phoneInput.value = phone.substring(1);
+            }
+        });
+
+        // Initialize payment amount
+        updatePaymentAmount();
+
+        // Add input validation styles
+        phoneInput.addEventListener('input', function () {
+            if (validatePhoneNumber(this.value.trim())) {
+                this.classList.remove('is-invalid');
+                this.classList.add('is-valid');
+            } else {
+                this.classList.remove('is-valid');
+                this.classList.add('is-invalid');
+            }
+        });
+    });
+</script>
+{% endblock %}

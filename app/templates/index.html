@@ -1,0 +1,248 @@
+{% extends "base.html" %}
+
+{% block title %}Home - TechElar Web Development Training{% endblock %}
+
+{% block content %}
+<!-- Hero Section -->
+<section class="hero-section bg-gradient py-5">
+    <div class="container">
+        <div class="row align-items-center">
+            <!-- Text Column -->
+            <div class="col-lg-6 order-2 order-lg-1 text-center text-lg-start px-4 mb-5 mb-lg-0">
+                <h1 class="display-4 fw-bold mb-4 text-gradient">
+                    Master Web Development with TechElar
+                </h1>
+                <p class="lead mb-4 fs-5">
+                    Transform your career with expert-led training in WordPress and Web Development. Join our community
+                    of successful developers.
+                </p>
+                <div class="d-flex flex-column flex-sm-row gap-3 justify-content-center justify-content-lg-start">
+                    <a href="{{ url_for('register') }}" class="btn btn-primary btn-lg px-4 py-3">
+                        <i class="fas fa-rocket me-2"></i>Get Started
+                    </a>
+                    <a href="{{ url_for('courses') }}" class="btn btn-outline-primary btn-lg px-4 py-3">
+                        <i class="fas fa-graduation-cap me-2"></i>View Courses
+                    </a>
+                </div>
+                <div
+                    class="mt-5 d-flex flex-column flex-sm-row justify-content-center justify-content-lg-start text-center text-sm-start gap-4">
+                    <div class="d-flex align-items-center">
+                        <i class="fas fa-users fa-2x text-primary me-3"></i>
+                        <div>
+                            <h4 class="mb-0 fw-bold">500+</h4>
+                            <small class="text-muted">Students Trained</small>
+                        </div>
+                    </div>
+                    <div class="d-flex align-items-center">
+                        <i class="fas fa-star fa-2x text-warning me-3"></i>
+                        <div>
+                            <h4 class="mb-0 fw-bold">4.8/5</h4>
+                            <small class="text-muted">Student Rating</small>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Image Column -->
+            <div class="col-lg-6 order-1 order-lg-2 text-center">
+                <img src="{{ url_for('static', filename='images/hero1.jpg') }}" alt="Web Development"
+                    class="img-fluid rounded-4 shadow-lg hero-image mx-auto" style="max-width: 100%; height: auto;">
+            </div>
+        </div>
+    </div>
+</section>
+
+
+<!-- Course Categories -->
+<section class="course-categories py-5">
+    <div class="container">
+        <div class="text-center mb-5">
+            <h2 class="display-5 fw-bold mb-3">Our Course Categories</h2>
+            <p class="lead text-muted">Choose the perfect path for your web development journey</p>
+        </div>
+        <div class="row g-4">
+            <!-- WordPress Development -->
+            <div class="col-md-6 col-lg-4">
+                <div class="card h-100 border-0 shadow-sm hover-card">
+                    <div class="card-body p-4">
+                        <div class="icon-box mb-4">
+                            <i class="fas fa-wordpress fa-3x text-primary"></i>
+                        </div>
+                        <h3 class="h4 mb-3">WordPress Development</h3>
+                        <p class="text-muted mb-4">Master WordPress development with our comprehensive courses.</p>
+                        <ul class="list-unstyled text-start mb-4">
+                            <li class="mb-2"><i class="fas fa-check-circle text-success me-2"></i>WordPress Basics (1
+                                Month)</li>
+                            <li class="mb-2"><i class="fas fa-check-circle text-success me-2"></i>Advanced WordPress (3
+                                Months)</li>
+                            <li><i class="fas fa-check-circle text-success me-2"></i>E-commerce Integration</li>
+                        </ul>
+                        <a href="{{ url_for('courses') }}" class="btn btn-outline-primary w-100">Explore Courses</a>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Web Development -->
+            <div class="col-md-6 col-lg-4">
+                <div class="card h-100 border-0 shadow-sm hover-card">
+                    <div class="card-body p-4">
+                        <div class="icon-box mb-4">
+                            <i class="fas fa-code fa-3x text-primary"></i>
+                        </div>
+                        <h3 class="h4 mb-3">Web Development</h3>
+                        <p class="text-muted mb-4">Learn modern web development with HTML, CSS, and Bootstrap.</p>
+                        <ul class="list-unstyled text-start mb-4">
+                            <li class="mb-2"><i class="fas fa-check-circle text-success me-2"></i>HTML5 & CSS3</li>
+                            <li class="mb-2"><i class="fas fa-check-circle text-success me-2"></i>Bootstrap Framework
+                            </li>
+                            <li><i class="fas fa-check-circle text-success me-2"></i>Responsive Design</li>
+                        </ul>
+                        <a href="{{ url_for('courses') }}" class="btn btn-outline-primary w-100">Explore Courses</a>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Career Support -->
+            <div class="col-md-6 col-lg-4">
+                <div class="card h-100 border-0 shadow-sm hover-card">
+                    <div class="card-body p-4">
+                        <div class="icon-box mb-4">
+                            <i class="fas fa-briefcase fa-3x text-primary"></i>
+                        </div>
+                        <h3 class="h4 mb-3">Career Support</h3>
+                        <p class="text-muted mb-4">Get support in launching your web development career.</p>
+                        <ul class="list-unstyled text-start mb-4">
+                            <li class="mb-2"><i class="fas fa-check-circle text-success me-2"></i>Portfolio Building
+                            </li>
+                            <li class="mb-2"><i class="fas fa-check-circle text-success me-2"></i>Job Placement</li>
+                            <li><i class="fas fa-check-circle text-success me-2"></i>Freelance Opportunities</li>
+                        </ul>
+                        <a href="{{ url_for('register') }}" class="btn btn-outline-primary w-100">Get Started</a>
+                    </div>
+                </div>
+            </div>
+            <!-- Digital Marketing Course -->
+            <div class="col-md-6 col-lg-4">
+                <div class="card h-100 border-0 shadow-sm hover-card">
+                    <div class="card-body p-4">
+                        <div class="icon-box mb-4">
+                            <i class="fas fa-bullhorn fa-3x text-primary"></i>
+                        </div>
+                        <h3 class="h4 mb-3">Digital Marketing</h3>
+                        <p class="text-muted mb-4">Learn powerful digital marketing skills to grow your online presence.</p>
+                        <ul class="list-unstyled text-start mb-4">
+                            <li class="mb-2"><i class="fas fa-check-circle text-success me-2"></i>Running Ads (Google & Social Media)</li>
+                            <li class="mb-2"><i class="fas fa-check-circle text-success me-2"></i>Content Marketing</li>
+                            <li class="mb-2"><i class="fas fa-check-circle text-success me-2"></i>Social Media Optimization (SMO)</li>
+                            <li class="mb-2"><i class="fas fa-check-circle text-success me-2"></i>Affiliate Marketing</li>
+                            <li class="mb-2"><i class="fas fa-check-circle text-success me-2"></i>Creating a Blog Website</li>
+                            <li><i class="fas fa-check-circle text-success me-2"></i>Blogging Basics</li>
+                        </ul>
+                        <a href="{{ url_for('courses') }}" class="btn btn-outline-primary w-100">Explore Courses</a>
+                    </div>
+                </div>
+            </div>
+            
+        </div>
+    </div>
+</section>
+
+<!-- Why Choose Us -->
+<section class="why-choose-us py-5 bg-light">
+    <div class="container">
+        <div class="text-center mb-5">
+            <h2 class="display-5 fw-bold mb-3">Why Choose TechElar?</h2>
+            <p class="lead text-muted">Experience the best in web development education</p>
+        </div>
+        <div class="row g-4">
+            <div class="col-md-4">
+                <div class="feature-card text-center p-4">
+                    <div class="icon-wrapper mb-4">
+                        <i class="fas fa-laptop-code fa-3x text-primary"></i>
+                    </div>
+                    <h4 class="mb-3">Hands-on Training</h4>
+                    <p class="text-muted">Learn by doing with practical exercises and real-world projects that build
+                        your portfolio.</p>
+                </div>
+            </div>
+            <div class="col-md-4">
+                <div class="feature-card text-center p-4">
+                    <div class="icon-wrapper mb-4">
+                        <i class="fas fa-certificate fa-3x text-primary"></i>
+                    </div>
+                    <h4 class="mb-3">Certification</h4>
+                    <p class="text-muted">Earn industry-recognized certificates that validate your skills and boost your
+                        career.</p>
+                </div>
+            </div>
+            <div class="col-md-4">
+                <div class="feature-card text-center p-4">
+                    <div class="icon-wrapper mb-4">
+                        <i class="fas fa-users fa-3x text-primary"></i>
+                    </div>
+                    <h4 class="mb-3">Expert Instructors</h4>
+                    <p class="text-muted">Learn from industry professionals with years of real-world experience.</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- Testimonials -->
+<section class="testimonials py-5">
+    <div class="container">
+        <div class="text-center mb-5">
+            <h2 class="display-5 fw-bold mb-3">Student Success Stories</h2>
+            <p class="lead text-muted">Hear from our successful graduates</p>
+        </div>
+        <div class="row g-4">
+            <div class="col-md-6">
+                <div class="testimonial-card p-4 border-0 shadow-sm rounded-4">
+                    <div class="d-flex align-items-center mb-4">
+                        <!-- <img src="{{ url_for('static', filename='images/testimonial1.jpg') }}" alt="Student"
+                            class="rounded-circle me-3" width="60"> -->
+                        <div>
+                            <h5 class="mb-1">Ivy Maundu</h5>
+                            <p class="text-muted mb-0">WordPress Developer</p>
+                        </div>
+                    </div>
+                    <p class="mb-0">"The WordPress course at TechElar transformed my career. I went from a complete
+                        beginner to a professional developer in just 3 months. The hands-on training was invaluable!"
+                    </p>
+                </div>
+            </div>
+            <div class="col-md-6">
+                <div class="testimonial-card p-4 border-0 shadow-sm rounded-4">
+                    <div class="d-flex align-items-center mb-4">
+                        <!-- <img src="{{ url_for('static', filename='images/testimonial2.jpg') }}" alt="Student"
+                            class="rounded-circle me-3" width="60"> -->
+                        <div>
+                            <h5 class="mb-1">Ropy Kevin</h5>
+                            <p class="text-muted mb-0">Web Developer</p>
+                        </div>
+                    </div>
+                    <p class="mb-0">"The web development course gave me the skills I needed to start my freelance
+                        career. The instructors were amazing and the support was incredible!"</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- Call to Action -->
+<section class="cta-section py-5 bg-primary text-white">
+    <div class="container">
+        <div class="row align-items-center">
+            <div class="col-lg-8 text-center text-lg-start">
+                <h2 class="display-5 fw-bold mb-3">Ready to Start Your Web Development Journey?</h2>
+                <p class="lead mb-0">Join our community of learners and transform your career today.</p>
+            </div>
+            <div class="col-lg-4 text-center text-lg-end mt-4 mt-lg-0">
+                <a href="{{ url_for('register') }}" class="btn btn-light btn-lg px-5 py-3">
+                    <i class="fas fa-rocket me-2"></i>Get Started Now
+                </a>
+            </div>
+        </div>
+    </div>
+</section>
+{% endblock %}

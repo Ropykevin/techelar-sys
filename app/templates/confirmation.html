@@ -1,0 +1,43 @@
+{% extends "base.html" %}
+
+{% block title %}Registration Confirmed - WordPress Course Platform{% endblock %}
+
+{% block content %}
+<div class="row justify-content-center">
+    <div class="col-md-8">
+        <div class="card">
+            <div class="card-body text-center">
+                <div class="mb-4">
+                    <i class="fas fa-check-circle text-success" style="font-size: 4rem;"></i>
+                </div>
+                <h2 class="card-title mb-4">Registration Confirmed!</h2>
+                <p class="lead">Thank you for registering for our WordPress course!</p>
+
+                <div class="alert alert-info">
+                    <h4 class="alert-heading">Next Steps</h4>
+                    <p>We've sent a confirmation email to <strong>{{ registration.email }}</strong> with the following
+                        details:</p>
+                    <ul class="text-start">
+                        <li>Course start date: {{ registration.appointment_date.strftime('%B %d, %Y') }}</li>
+                        <li>Course duration:
+                            {% if registration.duration == '1_month' %}
+                            WordPress Basics (1 Month)
+                            {% elif registration.duration == '3_months' %}
+                            Advanced WordPress (3 Months)
+                            {% elif registration.duration == '1_year' %}
+                            WordPress Mastery (1 Year)
+                            {% endif %}
+                        </li>
+                        <li>Access instructions for the course platform</li>
+                        <li>Pre-course preparation materials</li>
+                    </ul>
+                </div>
+
+                <div class="mt-4">
+                    <a href="{{ url_for('home') }}" class="btn btn-primary">Return to Home</a>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}
