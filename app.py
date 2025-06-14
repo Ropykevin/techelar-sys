@@ -16,7 +16,7 @@ from reportlab.lib.styles import getSampleStyleSheet, ParagraphStyle
 from reportlab.lib.units import inch
 import tempfile
 from werkzeug.middleware.proxy_fix import ProxyFix
-from flask_migrate import Migrate
+# from flask_migrate import Migrate
 
 
 
@@ -25,7 +25,7 @@ load_dotenv()
 app = Flask(__name__)
 app.config['SECRET_KEY'] = os.urandom(24)
 # app.config['SQLALCHEMY_DATABASE_URI'] = 'sqlite:///techelar.db'
-app.config['SQLALCHEMY_DATABASE_URI'] = 'postgresql://postgres:#Deno0707@69.197.187.23:5432/techelar?sslmode=disable'
+app.config['SQLALCHEMY_DATABASE_URI'] = 'postgresql://techelar:techelar254!@69.197.187.23:5432/techelar?sslmode=disable'
 # app.config['SQLALCHEMY_DATABASE_URI'] = 'postgresql://postgres:Kevin254!@localhost:5432/techelar'
 
 app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False
@@ -39,7 +39,7 @@ app.config['MAIL_PASSWORD'] = os.getenv('MAIL_PASSWORD')
 app.config['MAIL_DEFAULT_SENDER'] = os.getenv('MAIL_DEFAULT_SENDER')
 
 db = SQLAlchemy(app)
-migrate = Migrate(app, db)
+# migrate = Migrate(app, db)
 
 app.wsgi_app = ProxyFix(app.wsgi_app, x_for=1, x_proto=1)
 
